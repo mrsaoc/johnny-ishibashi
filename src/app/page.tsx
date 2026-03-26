@@ -5,87 +5,114 @@ export default function HomePage() {
   return (
       <div className="flex flex-col items-center w-full">
 
-        {/* Hero Section - A Primeira Impressão */}
-        <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-20 bg-[#F8F9FA]">
 
-          {/* Elemento de fundo sutil para dar profundidade (Glow Verde Verdy) */}
-          <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-            <div className="w-[600px] h-[600px] bg-gradient-to-tr from-[#00A850]/5 to-[#004B23]/5 rounded-full blur-3xl opacity-60"></div>
-          </div>
+          <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
 
-          <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-8">
-
-            {/* Badge de Especialidade */}
-            <span className="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-[#004B23] text-xs md:text-sm font-bold tracking-widest uppercase shadow-sm">
-            Intérprete Esportivo & Corporativo
-          </span>
-
-            {/* Título Principal de Impacto */}
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-[#111111] leading-[1.1] tracking-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#111111] leading-[1.1] tracking-tight">
               A voz oficial dos <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#004B23] to-[#00A850]">
+              <span className="text-[#004B23]">
               gigantes do esporte.
             </span>
             </h1>
 
-            {/* Subtítulo / Resumo */}
-            <p className="max-w-3xl text-lg md:text-xl text-gray-600 font-sans leading-relaxed">
-              Com domínio de quatro idiomas, atua como a ponte precisa entre lendas mundiais e equipes internacionais. A técnica excepcional aliada à sensibilidade cultural.
+            <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2">
+              Com domínio de quatro idiomas, atua como a ponte exata entre lendas mundiais e equipes internacionais. A técnica impecável aliada à sensibilidade cultural.
             </p>
 
-            {/* Call to Actions (CTAs) */}
-            <div className="mt-6 flex flex-col sm:flex-row items-center gap-6">
+            <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
+
               <Link
                   href="/inventario"
-                  className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[2px] focus:outline-none shadow-md"
+                  className="group relative inline-flex items-center justify-center gap-3 bg-[#004B23] text-white w-full sm:w-auto px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg"
               >
-                {/* Gradiente animado simulando a camisa */}
-                <span className="absolute inset-0 bg-gradient-to-r from-[#00A850] via-[#004B23] to-[#00A850] animate-gradient-x transition-all duration-500"></span>
+                <span className="absolute inset-y-0 left-0 w-[4px] bg-[#00A850] transition-all duration-300 group-hover:w-full group-hover:opacity-10"></span>
+                <span className="absolute inset-y-0 left-0 w-[4px] bg-[#00A850]"></span>
 
-                <span className="relative flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-[#004B23] transition-colors duration-300 group-hover:bg-transparent group-hover:text-white">
+                <span className="relative z-10 flex items-center gap-2">
                 Explorar Inventário
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
               </span>
               </Link>
 
-              <Link href="/galeria" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#111111] transition-colors flex items-center gap-2">
-                Ver Galeria
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <Link href="/galeria" className="group text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#111111] transition-colors flex items-center justify-center gap-2 w-full sm:w-auto py-2">
+              <span className="relative flex items-center justify-center w-10 h-10 border border-gray-300 group-hover:border-[#111111] transition-colors">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform">
                   <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
                   <circle cx="9" cy="9" r="2"></circle>
                   <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                 </svg>
+              </span>
+                Ver Galeria
               </Link>
             </div>
+
+            {/* Prova Social */}
+            <div className="mt-12 sm:mt-16 pt-8 border-t border-gray-300 w-full max-w-3xl flex flex-col gap-4">
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gray-500">Excelência validada ao lado de</p>
+              <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-xs sm:text-sm md:text-base font-serif font-medium text-[#111111] px-4">
+                <span>Pelé</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>Lionel Messi</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>Neymar Jr.</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>Zico</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>FIFA</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>J-League</span>
+              </div>
+            </div>
+
           </div>
         </section>
 
-        {/* Seção de Autoridade - O Caso Rakuten 2017 */}
-        <section className="w-full bg-white py-24 px-6 border-t border-gray-100">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        {/* Seção Rakuten */}
+        <section className="w-full bg-[#FFFFFF] py-20 sm:py-32 px-4 sm:px-6 border-t border-gray-200">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center">
 
-            <div className="flex flex-col gap-6">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#111111] leading-tight">
-                Respeitando o protagonismo.
-              </h2>
-              <p className="text-gray-600 font-sans text-lg leading-relaxed">
-                Sua capacidade de transmitir não apenas as palavras, mas o tom e o humor fiel de cada atleta o tornou um dos intérpretes mais confiáveis para as grandes marcas globais.
+            <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
+              <div className="flex flex-col gap-3 sm:gap-4">
+              <span className="text-[#004B23] font-sans font-bold text-xs sm:text-sm uppercase tracking-widest">
+                A Arte da Interpretação
+              </span>
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#111111] leading-[1.1]">
+                  Respeitando o protagonismo.
+                </h2>
+              </div>
+
+              <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
+                Sua capacidade de transmitir não apenas as palavras, mas o <strong className="text-[#111111] font-semibold">tom e o humor fiel</strong> de cada atleta o tornou um dos intérpretes mais confiáveis para as grandes marcas globais e turnês asiáticas.
               </p>
-              <p className="text-gray-600 font-sans text-lg leading-relaxed">
-                Um dos momentos que definem sua excelência estratégica ocorreu no evento da Rakuten em 2017, atuando na coletiva de imprensa oficial ao lado de Lionel Messi, Neymar, Gerard Piqué e Arda Turan.
+
+              <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
+                Um dos momentos que definem sua excelência estratégica ocorreu no evento da <strong className="text-[#111111] font-semibold">Rakuten em 2017</strong>, atuando na coletiva de imprensa oficial garantindo uma comunicação fluida entre Lionel Messi, Neymar, Gerard Piqué e Arda Turan.
               </p>
             </div>
 
-            {/* Espaço reservado para a foto histórica do evento */}
-            <div className="relative aspect-[4/3] w-full bg-[#F8F9FA] border border-gray-200 rounded-3xl overflow-hidden shadow-lg group flex items-center justify-center">
-              <div className="text-gray-400 font-sans text-sm tracking-widest uppercase text-center px-4">
-                [ Inserir Foto: Johnny no evento Rakuten 2017 ]
+            <div className="lg:col-span-7 relative pb-12 sm:pb-0">
+
+              <div className="relative aspect-[4/3] md:aspect-[16/10] w-full bg-[#F8F9FA] rounded-sm border border-gray-200 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                <span className="text-gray-400 font-sans text-xs sm:text-sm tracking-widest uppercase px-4 text-center">
+                  [ Inserir Foto: Johnny no evento Rakuten ]
+                </span>
+                </div>
               </div>
-              {/* Efeito sutil de hover na imagem quando ela existir */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Card Flutuante Ajustado para Mobile */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] sm:w-auto sm:translate-x-0 sm:-bottom-10 sm:-left-10 bg-white p-5 sm:p-8 border border-gray-200 max-w-sm z-20 shadow-md">
+                <div className="w-8 sm:w-10 h-1 bg-[#004B23] mb-4 sm:mb-6"></div>
+                <p className="font-serif text-base sm:text-lg md:text-xl text-[#111111] italic leading-tight">
+                  "Não basta traduzir as palavras. É preciso reproduzir fielmente a personalidade de cada lenda."
+                </p>
+              </div>
+
             </div>
 
           </div>

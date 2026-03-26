@@ -5,47 +5,43 @@ import { galleryData } from '@/data/gallery';
 
 export default function GaleriaPage() {
     return (
-        <div className="flex flex-col items-center w-full bg-[#F8F9FA] min-h-screen pb-24">
+        <div className="flex flex-col items-center w-full bg-[#F8F9FA] min-h-screen pb-20 sm:pb-32">
 
-            {/* Cabeçalho da Página */}
-            <section className="w-full max-w-7xl mx-auto px-6 pt-16 pb-12 text-center">
-                <h1 className="font-serif text-4xl md:text-6xl font-bold text-[#111111] tracking-tight">
+            <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-12 sm:pb-16 text-center">
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold text-[#111111] tracking-tight">
                     Galeria de Mídia
                 </h1>
-                <p className="mt-6 text-lg text-gray-600 font-sans max-w-2xl mx-auto leading-relaxed">
-                    Registros visuais de atuações ao lado de gigantes do esporte, eventos institucionais e coberturas da grande mídia internacional.
+                <div className="w-12 sm:w-16 h-1 bg-[#004B23] mx-auto mt-4 sm:mt-6 mb-4 sm:mb-6"></div>
+                <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 font-sans max-w-2xl mx-auto leading-relaxed">
+                    Registros visuais e documentais de atuações ao lado de gigantes do esporte, eventos institucionais e coberturas da grande mídia internacional.
                 </p>
             </section>
 
-            {/* Grid de Imagens */}
-            <section className="w-full max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
 
                     {galleryData.map((item) => (
-                        <div
-                            key={item.id}
-                            className="group relative overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl aspect-[4/3] cursor-pointer"
-                        >
-                            {/* Imagem */}
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                                src={item.imageUrl}
-                                alt={item.caption}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                loading="lazy"
-                            />
+                        <div key={item.id} className="flex flex-col group cursor-default">
 
-                            {/* Overlay Glassmorphism para a Legenda */}
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/60 to-transparent pt-12 pb-6 px-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                                <p className="text-white font-sans text-sm font-medium leading-snug drop-shadow-md">
+                            <div className="relative aspect-[4/3] w-full bg-white border border-gray-200 rounded-sm overflow-hidden shadow-sm transition-shadow duration-300 group-hover:shadow-md">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src={item.imageUrl}
+                                    alt={`Registro fotográfico ${item.id}`}
+                                    className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-90"
+                                    loading="lazy"
+                                />
+                            </div>
+
+                            <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 pl-3 sm:pl-4 border-l-2 border-transparent group-hover:border-[#004B23] transition-colors duration-300">
+                <span className="font-serif text-base sm:text-lg font-bold text-[#004B23] leading-none pt-0.5">
+                  {item.id < 10 ? `0${item.id}` : item.id}.
+                </span>
+                                <p className="font-sans text-xs sm:text-sm text-gray-600 leading-relaxed pr-2">
                                     {item.caption}
                                 </p>
                             </div>
 
-                            {/* Etiqueta de Numeração Opcional (Design Premium) */}
-                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#004B23] text-xs font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
-                                #{item.id < 10 ? `0${item.id}` : item.id}
-                            </div>
                         </div>
                     ))}
 

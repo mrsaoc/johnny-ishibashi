@@ -19,7 +19,7 @@ export default function Footer() {
                             JOHNNY ISHIBASHI
                         </Link>
                         <p className="text-gray-500 font-sans text-sm leading-relaxed max-w-xs">
-                            A ponte precisa entre lendas do esporte, instituições globais e o mercado asiático. Excelência em interpretação simultânea e consecutiva.
+                            A ponte precisa entre lendas do desporto, instituições globais e o mercado asiático. Excelência em interpretação simultânea e consecutiva.
                         </p>
                     </div>
 
@@ -29,34 +29,34 @@ export default function Footer() {
                             Navegação
                         </h4>
                         <nav className="flex flex-col gap-3.5">
-                            <Link href="/" className="text-gray-500 hover:text-[#00A850] transition-colors text-sm font-medium w-max">
+                            <Link href="/" className="text-gray-500 hover:text-[#004B23] transition-colors text-sm font-medium w-max">
                                 Início
                             </Link>
-                            <Link href="/inventario" className="text-gray-500 hover:text-[#00A850] transition-colors text-sm font-medium w-max">
+                            <Link href="/inventario" className="text-gray-500 hover:text-[#004B23] transition-colors text-sm font-medium w-max">
                                 Inventário Profissional
                             </Link>
-                            <Link href="/galeria" className="text-gray-500 hover:text-[#00A850] transition-colors text-sm font-medium w-max">
+                            <Link href="/galeria" className="text-gray-500 hover:text-[#004B23] transition-colors text-sm font-medium w-max">
                                 Galeria de Mídia
                             </Link>
                         </nav>
                     </div>
 
-                    {/* Coluna 3: Contato e Redes */}
+                    {/* Coluna 3: Contatos e Redes */}
                     <div className="flex flex-col gap-5">
                         <h4 className="font-sans font-bold text-[#111111] uppercase tracking-widest text-xs">
-                            Contato Profissional
+                            Contacto Profissional
                         </h4>
                         <div className="flex flex-col gap-4">
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-gray-500 hover:text-[#004B23] transition-colors text-sm font-medium w-max">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-y-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform">
                                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                                     <rect width="4" height="12" x="2" y="9"></rect>
                                     <circle cx="4" cy="4" r="2"></circle>
                                 </svg>
                                 LinkedIn Oficial
                             </a>
-                            <a href="https://wa.me/5513996988700" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-gray-500 hover:text-[#00A850] transition-colors text-sm font-medium w-max">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-y-0.5">
+                            <a href="https://wa.me/5513996988700" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-gray-500 hover:text-[#004B23] transition-colors text-sm font-medium w-max">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform">
                                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                                 </svg>
                                 Assessoria / WhatsApp
@@ -71,12 +71,7 @@ export default function Footer() {
                     <p className="text-gray-400 text-xs font-sans text-center md:text-left">
                         &copy; {currentYear} Johnny Ishibashi. Todos os direitos reservados.
                     </p>
-                    <p className="text-gray-400 text-xs font-sans flex items-center gap-1.5">
-                        Desenvolvido por
-                        <a href="https://agencianocrato.com.br" target="_blank" rel="noopener noreferrer" className="font-bold text-[#111111] hover:text-[#00A850] transition-colors">
-                            Nocrato MKT
-                        </a>
-                    </p>
+
                 </div>
 
             </div>
