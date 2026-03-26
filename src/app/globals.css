@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Paleta de Cores Customizada */
+  --color-offwhite: #F8F9FA;
+  --color-verdy-light: #00A850;
+  --color-verdy-dark: #004B23;
+  --color-verdy-gradient: linear-gradient(90deg, #00A850 0%, #004B23 50%, #00A850 100%);
+
+  /* Tipografia */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    background-color: var(--color-offwhite);
+    color: #111111;
+  }
+
+  body {
+    @apply bg-offwhite text-neutral-900 font-sans antialiased selection:bg-verdy-light selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animação para o botão "Casca de Melancia" que usaremos no Header/Hero */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s linear infinite;
+  background-size: 200% auto;
 }
