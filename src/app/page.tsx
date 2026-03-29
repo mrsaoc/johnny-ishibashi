@@ -1,26 +1,34 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
   return (
       <div className="flex flex-col items-center w-full">
 
-        {/* Hero Section */}
+        {/* Hero Section - Sem Badges, Apenas Autoridade Tipográfica */}
         <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-20 bg-[#F8F9FA]">
 
           <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
 
+            {/* Título Principal */}
             <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#111111] leading-[1.1] tracking-tight">
-              A voz oficial dos <br />
+              {t.home.title1} <br />
               <span className="text-[#004B23]">
-              gigantes do esporte.
+              {t.home.title2}
             </span>
             </h1>
 
+            {/* Subtítulo */}
             <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2">
-              Com domínio de quatro idiomas, atua como a ponte exata entre lendas mundiais e equipes internacionais. A técnica impecável aliada à sensibilidade cultural.
+              {t.home.subtitle}
             </p>
 
+            {/* Call to Actions (CTAs) */}
             <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
 
               <Link
@@ -31,8 +39,8 @@ export default function HomePage() {
                 <span className="absolute inset-y-0 left-0 w-[4px] bg-[#00A850]"></span>
 
                 <span className="relative z-10 flex items-center gap-2">
-                Explorar Inventário
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+                {t.home.ctaInventory}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>
@@ -47,13 +55,13 @@ export default function HomePage() {
                   <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                 </svg>
               </span>
-                Ver Galeria
+                {t.home.ctaGallery}
               </Link>
             </div>
 
             {/* Prova Social */}
             <div className="mt-12 sm:mt-16 pt-8 border-t border-gray-300 w-full max-w-3xl flex flex-col gap-4">
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gray-500">Excelência validada ao lado de</p>
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gray-500">{t.home.trust}</p>
               <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-xs sm:text-sm md:text-base font-serif font-medium text-[#111111] px-4">
                 <span>Pelé</span>
                 <span className="text-gray-300 hidden sm:inline">•</span>
@@ -79,19 +87,23 @@ export default function HomePage() {
             <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
               <div className="flex flex-col gap-3 sm:gap-4">
               <span className="text-[#004B23] font-sans font-bold text-xs sm:text-sm uppercase tracking-widest">
-                A Arte da Interpretação
+                {t.home.rakutenTag}
               </span>
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#111111] leading-[1.1]">
-                  Respeitando o protagonismo.
+                  {t.home.rakutenTitle}
                 </h2>
               </div>
 
               <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
-                Sua capacidade de transmitir não apenas as palavras, mas o <strong className="text-[#111111] font-semibold">tom e o humor fiel</strong> de cada atleta o tornou um dos intérpretes mais confiáveis para as grandes marcas globais e turnês asiáticas.
+                {t.home.rakutenP1_1}
+                <strong className="text-[#111111] font-semibold">{t.home.rakutenP1_strong}</strong>
+                {t.home.rakutenP1_2}
               </p>
 
               <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
-                Um dos momentos que definem sua excelência estratégica ocorreu no evento da <strong className="text-[#111111] font-semibold">Rakuten em 2017</strong>, atuando na coletiva de imprensa oficial garantindo uma comunicação fluida entre Lionel Messi, Neymar, Gerard Piqué e Arda Turan.
+                {t.home.rakutenP2_1}
+                <strong className="text-[#111111] font-semibold">{t.home.rakutenP2_strong}</strong>
+                {t.home.rakutenP2_2}
               </p>
             </div>
 
@@ -100,16 +112,15 @@ export default function HomePage() {
               <div className="relative aspect-[4/3] md:aspect-[16/10] w-full bg-[#F8F9FA] rounded-sm border border-gray-200 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
                 <span className="text-gray-400 font-sans text-xs sm:text-sm tracking-widest uppercase px-4 text-center">
-                  [ Inserir Foto: Johnny no evento Rakuten ]
+                  {t.home.rakutenPhotoHolder}
                 </span>
                 </div>
               </div>
 
-              {/* Card Flutuante Ajustado para Mobile */}
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] sm:w-auto sm:translate-x-0 sm:-bottom-10 sm:-left-10 bg-white p-5 sm:p-8 border border-gray-200 max-w-sm z-20 shadow-md">
                 <div className="w-8 sm:w-10 h-1 bg-[#004B23] mb-4 sm:mb-6"></div>
                 <p className="font-serif text-base sm:text-lg md:text-xl text-[#111111] italic leading-tight">
-                  "Não basta traduzir as palavras. É preciso reproduzir fielmente a personalidade de cada lenda."
+                  {t.home.rakutenQuote}
                 </p>
               </div>
 

@@ -3,10 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Importamos o motor de tradução
+    const { language, setLanguage, t } = useLanguage();
     const pathname = usePathname();
 
     useEffect(() => {
@@ -17,7 +21,6 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Bloqueia o scroll da página quando o menu mobile está aberto
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -27,7 +30,6 @@ export default function Header() {
     }, [isMobileMenuOpen]);
 
     const isActive = (path: string) => pathname === path;
-
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     return (
@@ -48,15 +50,14 @@ export default function Header() {
                     JOHNNY ISHIBASHI
                 </Link>
 
-                {/* Navegação Desktop */}
-                <nav className="hidden md:flex items-center gap-10">
+                <nav className="hidden lg:flex items-center gap-10">
                     <Link
                         href="/"
                         className={`text-sm font-bold uppercase tracking-widest transition-colors ${
                             isActive('/') ? 'text-[#004B23]' : 'text-gray-500 hover:text-[#111111]'
                         }`}
                     >
-                        Início
+                        {t.header.home}
                     </Link>
                     <Link
                         href="/inventario"
@@ -64,7 +65,7 @@ export default function Header() {
                             isActive('/inventario') ? 'text-[#004B23]' : 'text-gray-500 hover:text-[#111111]'
                         }`}
                     >
-                        Inventário
+                        {t.header.inventory}
                     </Link>
                     <Link
                         href="/galeria"
@@ -72,13 +73,35 @@ export default function Header() {
                             isActive('/galeria') ? 'text-[#004B23]' : 'text-gray-500 hover:text-[#111111]'
                         }`}
                     >
-                        Galeria
+                        {t.header.gallery}
                     </Link>
                 </nav>
 
-                {/* Call to Action Desktop */}
-                <div className="hidden md:block">
-                    <Link
+                <div className="hidden md:flex items-center gap-6 relative z-50">
+
+                    {/* Seletor de Idiomas Ativo */}
+                    <div className="flex items-center gap-3 pr-6 border-r border-gray-300">
+                        <button
+                            onClick={() => setLanguage('PT')}
+                            className={`text-xs font-bold transition-colors ${language === 'PT' ? 'text-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+                        >
+                            PT
+                        </button>
+                        <button
+                            onClick={() => setLanguage('EN')}
+                            className={`text-xs font-bold transition-colors ${language === 'EN' ? 'text-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+                        >
+                            EN
+                        </button>
+                        <button
+                            onClick={() => setLanguage('JP')}
+                            className={`text-xs font-bold transition-colors ${language === 'JP' ? 'text-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+                        >
+                            JP
+                        </button>
+                    </div>
+
+                    <a
                         href="https://wa.me/5513996988700"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -86,16 +109,15 @@ export default function Header() {
                     >
                         <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#00A850] transform translate-y-[1px] group-hover:translate-y-0 transition-transform duration-300"></span>
                         <span className="relative z-10 flex items-center gap-2">
-              Falar com Johnny
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+              {t.header.contact}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
             </span>
-                    </Link>
+                    </a>
                 </div>
 
-                {/* Botão Menu Mobile */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     className="md:hidden text-[#111111] focus:outline-none hover:text-[#004B23] transition-colors relative z-50 p-2 -mr-2"
@@ -119,13 +141,12 @@ export default function Header() {
 
             </div>
 
-            {/* Overlay Menu Mobile */}
             <div
                 className={`fixed inset-0 bg-white z-40 flex flex-col pt-32 px-6 transition-all duration-300 md:hidden ${
                     isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
                 }`}
             >
-                <nav className="flex flex-col gap-8">
+                <nav className="flex flex-col gap-8 flex-grow">
                     <Link
                         href="/"
                         onClick={closeMobileMenu}
@@ -133,7 +154,7 @@ export default function Header() {
                             isActive('/') ? 'text-[#004B23]' : 'text-[#111111]'
                         }`}
                     >
-                        Início
+                        {t.header.home}
                     </Link>
                     <Link
                         href="/inventario"
@@ -142,7 +163,7 @@ export default function Header() {
                             isActive('/inventario') ? 'text-[#004B23]' : 'text-[#111111]'
                         }`}
                     >
-                        Inventário
+                        {t.header.inventory}
                     </Link>
                     <Link
                         href="/galeria"
@@ -151,23 +172,45 @@ export default function Header() {
                             isActive('/galeria') ? 'text-[#004B23]' : 'text-[#111111]'
                         }`}
                     >
-                        Galeria
+                        {t.header.gallery}
                     </Link>
                 </nav>
 
-                <div className="mt-12">
-                    <Link
+                <div className="pb-12 mt-auto">
+
+                    <div className="flex items-center justify-center gap-8 mb-8">
+                        <button
+                            onClick={() => setLanguage('PT')}
+                            className={`text-sm font-bold transition-colors ${language === 'PT' ? 'text-[#004B23] border-b-2 border-[#004B23] pb-1' : 'text-gray-400 hover:text-[#111111] pb-1'}`}
+                        >
+                            PT
+                        </button>
+                        <button
+                            onClick={() => setLanguage('EN')}
+                            className={`text-sm font-bold transition-colors ${language === 'EN' ? 'text-[#004B23] border-b-2 border-[#004B23] pb-1' : 'text-gray-400 hover:text-[#111111] pb-1'}`}
+                        >
+                            EN
+                        </button>
+                        <button
+                            onClick={() => setLanguage('JP')}
+                            className={`text-sm font-bold transition-colors ${language === 'JP' ? 'text-[#004B23] border-b-2 border-[#004B23] pb-1' : 'text-gray-400 hover:text-[#111111] pb-1'}`}
+                        >
+                            JP
+                        </button>
+                    </div>
+
+                    <a
                         href="https://wa.me/5513996988700"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-3 bg-[#004B23] text-white w-full py-4 text-sm font-bold uppercase tracking-[0.2em] shadow-md"
                     >
-                        Falar com Johnny
+                        {t.header.contact}
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M5 12h14"></path>
                             <path d="m12 5 7 7-7 7"></path>
                         </svg>
-                    </Link>
+                    </a>
                 </div>
             </div>
 

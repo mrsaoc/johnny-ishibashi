@@ -4,15 +4,14 @@ import "./globals.css";
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/context/LanguageContext";
 
-// Fonte Sans-Serif (Moderna e limpa para textos)
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-sans",
     display: "swap",
 });
 
-// Fonte Serifada (Tradicional e elegante para títulos)
 const playfair = Playfair_Display({
     subsets: ["latin"],
     variable: "--font-serif",
@@ -31,19 +30,16 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt-BR" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-        {/* O min-h-screen e flex-col garantem que o footer fique sempre colado na base da tela */}
         <body className="antialiased min-h-screen flex flex-col relative bg-[#F8F9FA] text-[#111111]">
 
-        {/* Header Global (Navbar) */}
-        <Header />
-
-        {/* O flex-grow garante que o conteúdo principal empurre o footer para baixo */}
-        <main className="flex-grow flex flex-col pt-24">
-            {children}
-        </main>
-
-        {/* Footer Global */}
-        <Footer />
+        {/* Envolvemos toda a aplicação com o Provider de Idiomas */}
+        <LanguageProvider>
+            <Header />
+            <main className="flex-grow flex flex-col pt-24">
+                {children}
+            </main>
+            <Footer />
+        </LanguageProvider>
 
         </body>
         </html>
