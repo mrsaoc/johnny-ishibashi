@@ -5,8 +5,8 @@ export interface GalleryItem {
     imageUrl: string;
 }
 
-// Quando o cliente enviar, substitua as URLs por '/galeria/foto1.jpg', etc.
-export const galleryData: GalleryItem[] = Array.from({ length: 30 }, (_, index) => ({
+// Mapeia exatamente as 39 imagens no formato /assets/fotoX.jpeg
+export const galleryData: GalleryItem[] = Array.from({ length: 39 }, (_, index) => ({
     id: index + 1,
-    imageUrl: `https://picsum.photos/seed/${index + 1}/800/600`,
+    imageUrl: `/assets/foto${index + 1}.jpeg`,
 }));

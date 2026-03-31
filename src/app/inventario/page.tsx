@@ -8,7 +8,6 @@ export default function InventarioPage() {
     const [activeCategory, setActiveCategory] = useState(inventoryData[0].id);
     const { t, language } = useLanguage();
 
-    // Busca os dados da categoria ativa
     const currentCategoryData = inventoryData.find(cat => cat.id === activeCategory);
 
     return (
@@ -28,7 +27,7 @@ export default function InventarioPage() {
             {/* Container Principal */}
             <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row gap-8 md:gap-12">
 
-                {/* Menu Lateral - Utilizando títulos traduzidos da estrutura de dados */}
+                {/* Menu Lateral */}
                 <aside className="w-full md:w-1/3 shrink-0 flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-2 md:gap-1 pb-4 md:pb-0 scrollbar-hide snap-x">
                     {inventoryData.map((category) => (
                         <button
@@ -45,7 +44,7 @@ export default function InventarioPage() {
                     ))}
                 </aside>
 
-                {/* Área de Conteúdo - Utilizando itens traduzidos da estrutura de dados */}
+                {/* Área de Conteúdo */}
                 <div className="w-full md:w-2/3 bg-white border border-gray-200 p-6 sm:p-8 md:p-12">
                     <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-[#111111] mb-8 sm:mb-10 pb-4 sm:pb-6 border-b border-gray-200">
                         {currentCategoryData?.title[language]}
@@ -54,17 +53,47 @@ export default function InventarioPage() {
                     <div className="relative border-l-2 border-gray-300 ml-2 md:ml-4 space-y-8 sm:space-y-12">
                         {currentCategoryData?.items.map((item, index) => (
                             <div key={index} className="relative pl-6 sm:pl-8 md:pl-10 group">
-                                {/* Marcador */}
                                 <div className="absolute -left-[7px] top-1.5 w-3 h-3 bg-white border-2 border-[#004B23]"></div>
 
-                                {/* Conteúdo */}
-                                <div className="flex flex-col gap-1 sm:gap-2">
+                                <div className="flex flex-col gap-2">
                   <span className="text-[#004B23] font-sans font-bold text-xs sm:text-sm uppercase tracking-widest">
                     {item.year}
                   </span>
-                                    <h3 className="text-gray-800 font-serif text-base sm:text-lg md:text-xl font-medium leading-relaxed group-hover:text-[#111111] transition-colors">
-                                        {item.title[language]}
-                                    </h3>
+
+                                    <div className="text-gray-800 font-serif text-base sm:text-lg md:text-xl font-medium leading-relaxed">
+                                        {item.url ? (
+                                            <a
+                                                href={item.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="hover:text-[#004B23] underline decoration-gray-300 hover:decoration-[#004B23] underline-offset-4 transition-all inline-flex items-center gap-2"
+                                            >
+                                                {item.title[language]}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 transition-opacity mt-1">
+                                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                </svg>
+                                            </a>
+                                        ) : (
+                                            // Renderizador Customizado: Força bloco vertical e estiliza listas
+                                            <div className="flex flex-col gap-1.5">
+                                                {item.title[language].split('\n').map((line, idx) => {
+                                                    const isBullet = line.trim().startsWith('•');
+                                                    const cleanText = isBullet ? line.replace('•', '').trim() : line;
+
+                                                    return (
+                                                        <span
+                                                            key={idx}
+                                                            className={`block ${isBullet ? 'relative pl-5 sm:pl-6 text-gray-600 font-sans text-sm sm:text-base before:content-[""] before:absolute before:left-1.5 sm:before:left-2 before:top-2 before:w-1.5 before:h-1.5 before:bg-[#004B23] before:rounded-none' : ''}`}
+                                                        >
+                              {cleanText}
+                            </span>
+                                                    );
+                                                })}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
