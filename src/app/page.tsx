@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
       <div className="flex flex-col items-center w-full">
 
-        {/* Hero Section - Sem Badges, Apenas Autoridade Tipográfica */}
+        {/* Hero Section */}
         <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-20 bg-[#F8F9FA]">
 
           <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
@@ -23,13 +23,24 @@ export default function HomePage() {
             </span>
             </h1>
 
-            {/* Subtítulo */}
-            <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2">
-              {t.home.subtitle}
-            </p>
+            {/* Subtítulo e Competências (Roles) */}
+            <div className="flex flex-col items-center gap-6 sm:gap-8 mt-2">
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2">
+                {t.home.subtitle}
+              </p>
+
+              {/* Lista Vertical de Competências - Old Money Design */}
+              <div className="flex flex-col items-center gap-2.5">
+                {t.home.roles.map((role, idx) => (
+                    <span key={idx} className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#004B23]">
+                  {role}
+                </span>
+                ))}
+              </div>
+            </div>
 
             {/* Call to Actions (CTAs) */}
-            <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
+            <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
 
               <Link
                   href="/inventario"

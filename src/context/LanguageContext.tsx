@@ -2,12 +2,13 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'PT' | 'EN' | 'JP';
+// Exportado para tipagem em outros arquivos
+export type Language = 'PT' | 'EN' | 'JP';
 
-export interface Dictionary {
+interface Dictionary {
     header: { home: string; inventory: string; gallery: string; contact: string; };
     footer: { summary: string; navigation: string; contact: string; linkedIn: string; whatsapp: string; credits1: string; credits2: string; };
-    home: { title1: string; title2: string; subtitle: string; roles: string; ctaInventory: string; ctaGallery: string; trust: string; rakutenTag: string; rakutenTitle: string; rakutenP1_1: string; rakutenP1_strong: string; rakutenP1_2: string; rakutenP2_1: string; rakutenP2_strong: string; rakutenP2_2: string; rakutenPhotoHolder: string; rakutenQuote: string; };
+    home: { title1: string; title2: string; subtitle: string; roles: string[]; ctaInventory: string; ctaGallery: string; trust: string; rakutenTag: string; rakutenTitle: string; rakutenP1_1: string; rakutenP1_strong: string; rakutenP1_2: string; rakutenP2_1: string; rakutenP2_strong: string; rakutenP2_2: string; rakutenPhotoHolder: string; rakutenQuote: string; };
     inventoryPage: { title: string; description: string; };
     galleryPage: { title: string; description: string; photoAlt: string; captionPlaceholder: string; };
 }
@@ -23,7 +24,7 @@ const translations: Record<Language, Dictionary> = {
         home: {
             title1: 'A voz por trás de', title2: 'grandes momentos internacionais.',
             subtitle: 'Fluente em quatro idiomas, Johnny Ishibashi atua como mentor e facilitador de conexões entre personalidades globais, empresas, governos e projetos culturais. Precisão técnica, sensibilidade cultural e experiência ao lado de grandes nomes internacionais.',
-            roles: 'Intérprete Internacional • Comunicador Institucional • Facilitador Diplomático • Mentor • Consultor Cultural',
+            roles: ['Intérprete Internacional', 'Comunicador Institucional', 'Facilitador Diplomático', 'Professor de Idiomas', 'Mentor', 'Consultor Cultural'],
             ctaInventory: 'Explorar Inventário', ctaGallery: 'Ver Galeria', trust: 'Excelência validada ao lado de',
             rakutenTag: 'A Arte da Interpretação', rakutenTitle: 'Respeitando o protagonismo.',
             rakutenP1_1: 'Sua capacidade de transmitir não apenas as palavras, mas o ', rakutenP1_strong: 'tom e o humor fiel', rakutenP1_2: ' de cada personalidade o tornou um dos intérpretes mais confiáveis para as grandes marcas globais e turnês asiáticas.',
@@ -39,7 +40,7 @@ const translations: Record<Language, Dictionary> = {
             title: 'Galeria de Mídia',
             description: 'Registros visuais e documentais de atuações ao lado de grandes personalidades, eventos institucionais e coberturas da grande mídia internacional.',
             photoAlt: 'Registro fotográfico',
-            captionPlaceholder: 'Legenda provisória. Aguardando envio do material do cliente.',
+            captionPlaceholder: 'Legenda em elaboração.',
         }
     },
     EN: {
@@ -52,7 +53,7 @@ const translations: Record<Language, Dictionary> = {
         home: {
             title1: 'The voice behind', title2: 'major international moments.',
             subtitle: 'Fluent in four languages, Johnny Ishibashi acts as a mentor and facilitator of connections between global personalities, corporations, governments, and cultural projects. Technical precision, cultural sensitivity, and experience alongside major international names.',
-            roles: 'International Interpreter • Institutional Communicator • Diplomatic Facilitator • Mentor • Cultural Consultant',
+            roles: ['International Interpreter', 'Institutional Communicator', 'Diplomatic Facilitator', 'Language Professor', 'Mentor', 'Cultural Consultant'],
             ctaInventory: 'Explore Inventory', ctaGallery: 'View Gallery', trust: 'Excellence validated alongside',
             rakutenTag: 'The Art of Interpretation', rakutenTitle: 'Respecting the spotlight.',
             rakutenP1_1: 'His ability to convey not just the words, but the ', rakutenP1_strong: 'faithful tone and humor', rakutenP1_2: ' of each personality has made him one of the most trusted interpreters for global brands and Asian tours.',
@@ -68,7 +69,7 @@ const translations: Record<Language, Dictionary> = {
             title: 'Media Gallery',
             description: 'Visual and documentary records of performances alongside global personalities, institutional events, and major international media coverage.',
             photoAlt: 'Photographic record',
-            captionPlaceholder: 'Provisional caption. Awaiting material from client.',
+            captionPlaceholder: 'Caption pending.',
         }
     },
     JP: {
@@ -81,7 +82,7 @@ const translations: Record<Language, Dictionary> = {
         home: {
             title1: '国際的な大舞台を', title2: '支える声。',
             subtitle: '4か国語に堪能なジョニー石橋は、世界的な著名人、企業、政府機関、文化プロジェクト間のコネクションを促進するメンターおよびファシリテーターとして活躍しています。確かな技術、文化的な感性、そして国際的なビッグネームと共にした豊かな経験。',
-            roles: '国際通訳者 • 組織広報 • 外交ファシリテーター • メンター • 文化コンサルタント',
+            roles: ['国際通訳者', '組織広報', '外交ファシリテーター', '語学講師', 'メンター', '文化コンサルタント'],
             ctaInventory: '経歴を見る', ctaGallery: 'ギャラリーを見る', trust: '共に検証された卓越性',
             rakutenTag: '通訳の芸術', rakutenTitle: '主役を尊重する。',
             rakutenP1_1: '言葉だけでなく、各著名人の', rakutenP1_strong: '忠実なトーンとユーモア', rakutenP1_2: 'を伝える彼の能力は、グローバルブランドやアジアツアーで最も信頼される通訳者の一人となりました。',
@@ -97,7 +98,7 @@ const translations: Record<Language, Dictionary> = {
             title: 'ギャラリー',
             description: '世界的な著名人、機関イベント、主要な国際メディア報道と並んで行われたパフォーマンスの視覚的および記録的記録。',
             photoAlt: '写真記録',
-            captionPlaceholder: '仮のキャプション。クライアントからの資料提供待ち。',
+            captionPlaceholder: 'キャプション準備中。',
         }
     }
 };
