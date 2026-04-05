@@ -2,11 +2,12 @@ import { Language } from '@/context/LanguageContext';
 
 export interface GalleryItem {
     id: number;
+    displayNumber: number;
     imageUrl: string;
     caption?: Record<Language, string>;
 }
 
-// Dicionário de Legendas Específicas e Validadas
+// 1. Dicionário de Legendas Específicas
 const customCaptions: Record<number, Record<Language, string>> = {
     1: { PT: 'Com Nicanor de Carvalho (Verdy Kawasaki 1998)', EN: 'With Nicanor de Carvalho (Verdy Kawasaki 1998)', JP: 'ニカノール・デ・カルバーリョと共に（ヴェルディ川崎 1998年）' },
     2: { PT: 'Seleção Universitária de Cuba', EN: 'Cuban National University Team', JP: 'キューバ大学代表チーム' },
@@ -23,20 +24,56 @@ const customCaptions: Record<number, Record<Language, string>> = {
     16: { PT: 'Gravação de externas (IPC TV)', EN: 'Location shooting (IPC TV)', JP: '野外ロケ（IPC TV）' },
 };
 
-// Ordem estrita e arquitetada do acervo visual (Editorial Order)
-// Removidas: 3, 9, 17, 20, 23
-// Agrupadas: Ronaldinho (18, 22, 27, 29), La Cage (31, 32), Kinky Boots (33-39)
-const orderedIds = [
-    1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, // Sequência inicial
-    18, 22, 27, 29, // Grupo Ronaldinho Gaúcho
-    19, 21, 24, 25, 26, 28, 30, // Transição institucional
-    31, 32, // Grupo La Cage aux Folles
-    33, 34, 35, 36, 37, 38, 39 // Grupo Kinky Boots
+// 2. Regras de Negócio (Motor Curatorial)
+const TOTAL_PHOTOS = 39;
+const EXCLUDED_PHOTOS = [3, 9, 17, 20, 23];
+
+const GROUPED_PHOTOS = [
+    [18, 22, 27, 29], // Grupo Ronaldinho Gaúcho
+    [31, 32],         // Grupo La Cage aux Folles
+    [33, 34, 35, 36, 37, 38, 39] // Grupo Kinky Boots
 ];
 
-// Mapeamento final dos dados para exportação
-export const galleryData: GalleryItem[] = orderedIds.map((id) => ({
+// 3. Algoritmo de Processamento Automático
+const buildGalleryOrder = (): number[] => {
+    const finalOrder: number[] = [];
+    const flatGroups = GROUPED_PHOTOS.flat();
+
+    for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+        // Regra A: Ignora sumariamente as fotos excluídas
+        if (EXCLUDED_PHOTOS.includes(i)) continue;
+
+        // Regra B: Lida com fotos que pertencem a grupos
+        if (flatGroups.includes(i)) {
+            const targetGroup = GROUPED_PHOTOS.find(group => group.includes(i));
+
+            // Encontra o primeiro ID válido do grupo
+            const firstValidInGroup = targetGroup?.find(id => !EXCLUDED_PHOTOS.includes(id));
+
+            // Injeta o grupo inteiro na primeira ocorrência válida
+            if (firstValidInGroup === i && targetGroup) {
+                targetGroup.forEach(id => {
+                    if (!EXCLUDED_PHOTOS.includes(id)) {
+                        finalOrder.push(id);
+                    }
+                });
+            }
+            continue;
+        }
+
+        // Regra C: Adiciona cronologicamente o restante
+        finalOrder.push(i);
+    }
+
+    return finalOrder;
+};
+
+// 4. Execução e Exportação
+const processedIds = buildGalleryOrder();
+
+export const galleryData: GalleryItem[] = processedIds.map((id, index) => ({
     id,
+    displayNumber: index + 1, // Numeração de exibição blindada
     imageUrl: `/assets/foto${id}.jpeg`,
     caption: customCaptions[id],
 }));
