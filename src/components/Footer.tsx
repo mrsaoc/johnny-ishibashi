@@ -75,8 +75,8 @@ export default function Footer() {
                     </p>
                     <p className="text-gray-400 text-[10px] sm:text-xs font-sans flex items-center gap-1.5">
                         {t.footer.credits2}
-                        <a href="https://agencianocrato.com.br" target="_blank" rel="noopener noreferrer" className="font-bold text-[#111111] hover:text-[#004B23] transition-colors">
-                            Nocrato MKT
+                        <a href="https://mrsaoc.vercel.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#111111] hover:text-[#004B23] transition-colors">
+                            mrsaoc
                         </a>
                     </p>
                 </div>
