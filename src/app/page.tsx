@@ -6,14 +6,13 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function HomePage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="flex flex-col items-center w-full">
 
       {/* Hero Section */}
       <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-20 bg-[#F8F9FA]">
-
         <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
 
           {/* Título Principal */}
@@ -24,9 +23,10 @@ export default function HomePage() {
             </span>
           </h1>
 
-          {/* Subtítulo e Competências (Roles) */}
+          {/* Subtítulo e Competências */}
           <div className="flex flex-col items-center gap-6 sm:gap-8 mt-2">
-            <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2">
+            {/* O whitespace-pre-line permite ler as quebras de linha que colocamos no texto em japonês */}
+            <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2 whitespace-pre-line">
               {t.home.subtitle}
             </p>
             
@@ -39,9 +39,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Call to Actions (CTAs) */}
+          {/* CTAs */}
           <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
-            
             <Link
               href="/inventario"
               className="group relative inline-flex items-center justify-center gap-3 bg-[#004B23] text-white w-full sm:w-auto px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg"
@@ -86,6 +85,21 @@ export default function HomePage() {
               <span className="text-gray-300 hidden sm:inline">•</span>
               <span>J-League</span>
             </div>
+            
+            {/* Lista adicional exibida estritamente na versão em Japonês */}
+            {language === 'JP' && (
+              <div className="flex flex-wrap justify-center gap-x-3 sm:gap-x-6 gap-y-2 text-xs sm:text-sm font-sans text-gray-600 px-4 mt-2">
+                <span>外務省</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>JICA</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>JETRO</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>東京入国管理局</span>
+                <span className="text-gray-300 hidden sm:inline">•</span>
+                <span>東京第二弁護士会</span>
+              </div>
+            )}
           </div>
 
         </div>
@@ -105,25 +119,27 @@ export default function HomePage() {
               </h2>
             </div>
             
-            <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
+            <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed whitespace-pre-line">
               {t.home.rakutenP1_1} 
               <strong className="text-[#111111] font-semibold">{t.home.rakutenP1_strong}</strong> 
               {t.home.rakutenP1_2}
             </p>
             
-            <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed">
-              {t.home.rakutenP2_1} 
-              <strong className="text-[#111111] font-semibold">{t.home.rakutenP2_strong}</strong> 
-              {t.home.rakutenP2_2}
-            </p>
+            {/* Condicional para evitar renderizar parágrafo vazio caso o idioma (como o JP) não tenha texto extra aqui */}
+            {t.home.rakutenP2_1 && (
+              <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed whitespace-pre-line">
+                {t.home.rakutenP2_1} 
+                <strong className="text-[#111111] font-semibold">{t.home.rakutenP2_strong}</strong> 
+                {t.home.rakutenP2_2}
+              </p>
+            )}
           </div>
 
           <div className="lg:col-span-7 relative pb-12 sm:pb-0">
-            
             <div className="relative aspect-[4/3] md:aspect-[16/10] w-full bg-[#F8F9FA] rounded-sm border border-gray-200 overflow-hidden shadow-sm">
               <Image 
-                src="/assets/foto88.jpeg"
-                alt="Johnny Ishibashi com Messi e Neymar"
+                src="/assets/foto13.jpeg"
+                alt="Johnny Ishibashi no evento Rakuten"
                 fill
                 className="object-cover"
               />
@@ -131,11 +147,10 @@ export default function HomePage() {
 
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] sm:w-auto sm:translate-x-0 sm:-bottom-10 sm:-left-10 bg-white p-5 sm:p-8 border border-gray-200 max-w-sm z-20 shadow-md">
               <div className="w-8 sm:w-10 h-1 bg-[#004B23] mb-4 sm:mb-6"></div>
-              <p className="font-serif text-base sm:text-lg md:text-xl text-[#111111] italic leading-tight">
+              <p className="font-serif text-base sm:text-lg md:text-xl text-[#111111] italic leading-tight whitespace-pre-line">
                 {t.home.rakutenQuote}
               </p>
             </div>
-
           </div>
 
         </div>

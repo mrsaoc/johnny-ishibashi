@@ -7,7 +7,7 @@ export interface GalleryItem {
   caption?: Record<Language, string>;
 }
 
-// 1. Dicionário de Legendas Específicas e Validadas
+// 1. Dicionário de Legendas Específicas
 const customCaptions: Record<number, Record<Language, string>> = {
   1: { PT: 'Com Nicanor de Carvalho (Verdy Kawasaki 1998)', EN: 'With Nicanor de Carvalho (Verdy Kawasaki 1998)', JP: 'ニカノール・デ・カルバーリョと共に（ヴェルディ川崎 1998年）' },
   2: { PT: 'Seleção Universitária de Cuba', EN: 'Cuban National University Team', JP: 'キューバ大学代表チーム' },
@@ -27,12 +27,17 @@ const customCaptions: Record<number, Record<Language, string>> = {
 
 // 2. Regras de Negócio (Motor Curatorial)
 const TOTAL_PHOTOS = 108; 
-const EXCLUDED_PHOTOS = [3, 9, 17, 20, 23];
 
+// Lista de arquivos originais mapeados a partir dos números visuais solicitados
+const EXCLUDED_PHOTOS = [
+  3, 9, 14, 17, 20, 22, 23, 28, 33, 36, 40, 51, 52, 53, 54, 61, 69, 76, 78, 80, 91
+];
+
+// O grupo do Ronaldinho e Broadway foi preservado, removendo internamente apenas os IDs que caíram na exclusão acima
 const GROUPED_PHOTOS = [
-  [18, 22, 27, 29], 
+  [18, 27, 29], // O 22 foi excluído pelo cliente, então saiu do grupo
   [31, 32],         
-  [33, 34, 35, 36, 37, 38, 39] 
+  [34, 35, 37, 38, 39] // 33 e 36 excluídos
 ];
 
 // 3. Algoritmo de Processamento Automático
@@ -47,7 +52,6 @@ const buildGalleryOrder = (): number[] => {
     // Regra B: Lida com fotos que pertencem a grupos
     if (flatGroups.includes(i)) {
       const targetGroup = GROUPED_PHOTOS.find(group => group.includes(i));
-      
       const firstValidInGroup = targetGroup?.find(id => !EXCLUDED_PHOTOS.includes(id));
 
       if (firstValidInGroup === i && targetGroup) {
