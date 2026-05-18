@@ -25,7 +25,6 @@ export default function HomePage() {
 
           {/* Subtítulo e Competências */}
           <div className="flex flex-col items-center gap-6 sm:gap-8 mt-2">
-            {/* O whitespace-pre-line permite ler as quebras de linha que colocamos no texto em japonês */}
             <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 font-sans leading-relaxed px-2 whitespace-pre-line">
               {t.home.subtitle}
             </p>
@@ -86,7 +85,6 @@ export default function HomePage() {
               <span>J-League</span>
             </div>
             
-            {/* Lista adicional exibida estritamente na versão em Japonês */}
             {language === 'JP' && (
               <div className="flex flex-wrap justify-center gap-x-3 sm:gap-x-6 gap-y-2 text-xs sm:text-sm font-sans text-gray-600 px-4 mt-2">
                 <span>外務省</span>
@@ -105,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Seção Rakuten */}
+      {/* Seção Foco no Cliente (Anterior Rakuten) */}
       <section className="w-full bg-[#FFFFFF] py-20 sm:py-32 px-4 sm:px-6 border-t border-gray-200">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center">
 
@@ -114,18 +112,22 @@ export default function HomePage() {
               <span className="text-[#004B23] font-sans font-bold text-xs sm:text-sm uppercase tracking-widest">
                 {t.home.rakutenTag}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#111111] leading-[1.1]">
-                {t.home.rakutenTitle}
-              </h2>
+              
+              {/* O título gigante só é renderizado se existir (foi retirado no JP) */}
+              {t.home.rakutenTitle && (
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#111111] leading-[1.1] whitespace-pre-line">
+                  {t.home.rakutenTitle}
+                </h2>
+              )}
             </div>
             
-            <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed whitespace-pre-line">
+            {/* Lógica dinâmica: Se for JP, o texto fica maior e preto. Se não, continua no padrão cinza */}
+            <p className={`font-sans leading-relaxed whitespace-pre-line ${language === 'JP' && !t.home.rakutenTitle ? 'text-xl sm:text-2xl text-[#111111] font-medium tracking-wide' : 'text-base sm:text-lg text-gray-600'}`}>
               {t.home.rakutenP1_1} 
-              <strong className="text-[#111111] font-semibold">{t.home.rakutenP1_strong}</strong> 
+              {t.home.rakutenP1_strong && <strong className="text-[#111111] font-semibold">{t.home.rakutenP1_strong}</strong>} 
               {t.home.rakutenP1_2}
             </p>
             
-            {/* Condicional para evitar renderizar parágrafo vazio caso o idioma (como o JP) não tenha texto extra aqui */}
             {t.home.rakutenP2_1 && (
               <p className="text-gray-600 font-sans text-base sm:text-lg leading-relaxed whitespace-pre-line">
                 {t.home.rakutenP2_1} 
