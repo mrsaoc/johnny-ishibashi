@@ -106,11 +106,11 @@ const translations: Record<Language, Dictionary> = {
     },
     inventoryPage: {
       title: '経歴・実績',
-      description: '世界で最も権威ある政府機関、芸術機関、スポーツ機関において、文化の架け橋として30年以上にわたり卓越した実績を残してきた歴史的記録。',
+      description: '政府、芸能、スポーツ関係において\n文化の架け橋として３０年以上にわたり卓越した実績',
     },
     galleryPage: {
       title: 'ギャラリー＆リンク',
-      description: '世界的な著名人、機関イベント、主要な国際メディア報道と並んで行われたパフォーマンスの視覚的および記録的記録。',
+      description: '各機関イベント、主要な国際メディア報道等',
       photoAlt: '写真記録',
       captionPlaceholder: 'キャプション準備中。',
       tabPhotos: '写真ギャラリー',

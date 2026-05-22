@@ -60,11 +60,11 @@ export const inventoryData: InventoryCategory[] = [
     id: "governamental",
     title: { PT: "Governamental", EN: "Governmental", JP: "政府機関・国際機関通訳" },
     items: [
-      { year: "2007-2019", title: { PT: "Ordem dos Advogados de Tóquio - Intérprete", EN: "Tokyo Bar Association - Interpreter", JP: "東京弁護士会 - 通訳" } },
-      { year: "2007-2023", title: { PT: "Departamento de Imigração de Tóquio - Intérprete", EN: "Tokyo Regional Immigration Bureau - Interpreter", JP: "東京出入国在留管理局 - 通訳" } },
+      { year: "2007-2019", title: { PT: "Ordem dos Advogados de Tóquio - Intérprete", EN: "Tokyo Bar Association - Interpreter", JP: "東京弁護士会" } },
+      { year: "2007-2023", title: { PT: "Departamento de Imigração de Tóquio - Intérprete", EN: "Tokyo Regional Immigration Bureau - Interpreter", JP: "東京出入国在留管理局" } },
       { year: "2008-2018", title: { PT: "Ministério dos Negócios Estrangeiros do Japão (ODA 案件多数)", EN: "Ministry of Foreign Affairs of Japan (Multiple ODA Projects)", JP: "日本国外務省（ODA 案件多数）" } },
       { year: "2008-2019", title: { PT: "JICA - Agência de Cooperação Internacional do Japão", EN: "JICA - Japan International Cooperation Agency", JP: "JICA - 国際協力機構" } },
-      { year: "2019", title: { PT: "Agência da Casa Imperial do Japão, Gabinete do Japão e Governo Metropolitano de Tóquio - Organização de logística e segurança da família real da Arábia Saudita na cerimônia de entronização do Imperador Naruhito", EN: "Imperial Household Agency, Cabinet of Japan, and Tokyo Metropolitan Government - Logistics and security organization for the Saudi Royal Family during Emperor Naruhito's enthronement ceremony", JP: "宮内庁、内閣、東京都 - 徳仁天皇即位の礼におけるサウジアラビア王室のロジスティクスおよび警備編成" } }
+      { year: "2019", title: { PT: "Agência da Casa Imperial do Japão, Gabinete do Japão e Governo Metropolitano de Tóquio - Organização de logística e segurança da família real da Arábia Saudita na cerimônia de entronização do Imperador Naruhito", EN: "Imperial Household Agency, Cabinet of Japan, and Tokyo Metropolitan Government - Logistics and security organization for the Saudi Royal Family during Emperor Naruhito's enthronement ceremony", JP: "東京都、内閣、宮内庁 - 徳仁天皇即位の礼における\nサウジアラビア王室のロジスティクスおよび警備編成" } }
     ]
   },
   {
