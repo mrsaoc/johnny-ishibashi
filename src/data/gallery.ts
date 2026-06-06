@@ -23,21 +23,25 @@ const customCaptions: Record<number, Record<Language, string>> = {
   15: { PT: 'Show com Naomi Grace (2004)', EN: 'Show with Naomi Grace (2004)', JP: 'ナオミ・グレースとのショー（2004年）' },
   16: { PT: 'Gravação de externas (IPC TV)', EN: 'Location shooting (IPC TV)', JP: '野外ロケ（IPC TV）' },
   57: { PT: 'Eurojapan Cup 2019 - Manchester City', EN: 'Eurojapan Cup 2019 - Manchester City', JP: 'EUROJAPAN CUP 2019 - マンチェスター・シティ' },
+  109: { PT: 'Preparação de Udon - MIE Kenjinkai', EN: 'Udon preparation - MIE Kenjinkai', JP: '徹夜でうどんの翻訳 - MIE Kenjinkai' }
 };
 
 // 2. Regras de Negócio (Motor Curatorial)
-const TOTAL_PHOTOS = 108; 
+const TOTAL_PHOTOS = 109; 
 
-// Lista de arquivos originais mapeados a partir dos números visuais solicitados
+// Lista de URLs customizadas que escapam da regra padrão "foto[ID].jpeg"
+const customUrls: Record<number, string> = {
+  109: '/assets/depoimento1.jpeg'
+};
+
 const EXCLUDED_PHOTOS = [
   3, 9, 14, 17, 20, 22, 23, 28, 33, 36, 40, 51, 52, 53, 54, 61, 69, 76, 78, 80, 91
 ];
 
-// O grupo do Ronaldinho e Broadway foi preservado, removendo internamente apenas os IDs que caíram na exclusão acima
 const GROUPED_PHOTOS = [
-  [18, 27, 29], // O 22 foi excluído pelo cliente, então saiu do grupo
+  [18, 27, 29], 
   [31, 32],         
-  [34, 35, 37, 38, 39] // 33 e 36 excluídos
+  [34, 35, 37, 38, 39] 
 ];
 
 // 3. Algoritmo de Processamento Automático
@@ -46,10 +50,8 @@ const buildGalleryOrder = (): number[] => {
   const flatGroups = GROUPED_PHOTOS.flat();
 
   for (let i = 1; i <= TOTAL_PHOTOS; i++) {
-    // Regra A: Ignora sumariamente as fotos excluídas
     if (EXCLUDED_PHOTOS.includes(i)) continue;
 
-    // Regra B: Lida com fotos que pertencem a grupos
     if (flatGroups.includes(i)) {
       const targetGroup = GROUPED_PHOTOS.find(group => group.includes(i));
       const firstValidInGroup = targetGroup?.find(id => !EXCLUDED_PHOTOS.includes(id));
@@ -63,8 +65,6 @@ const buildGalleryOrder = (): number[] => {
       }
       continue;
     }
-
-    // Regra C: Adiciona cronologicamente o restante
     finalOrder.push(i);
   }
 
@@ -77,6 +77,6 @@ const processedIds = buildGalleryOrder();
 export const galleryData: GalleryItem[] = processedIds.map((id, index) => ({
   id,
   displayNumber: index + 1,
-  imageUrl: `/assets/foto${id}.jpeg`,
+  imageUrl: customUrls[id] || `/assets/foto${id}.jpeg`,
   caption: customCaptions[id],
 }));

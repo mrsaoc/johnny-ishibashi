@@ -7,33 +7,25 @@ import { inventoryData } from '@/data/inventory';
 export default function InventarioPage() {
   const { t, language } = useLanguage();
   
-  // Estado para controlar qual categoria está ativa no menu lateral (inicia com a primeira)
   const [activeCategory, setActiveCategory] = useState(inventoryData[0].id);
-
-  // Busca os dados da categoria selecionada
   const activeData = inventoryData.find(cat => cat.id === activeCategory);
 
   return (
     <div className="flex flex-col items-center w-full bg-[#F8F9FA] min-h-screen pb-20 sm:pb-32 relative">
       
-      {/* Cabeçalho */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-12 sm:pb-16 text-center">
         <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold text-[#111111] tracking-tight">
           {t.inventoryPage.title}
         </h1>
         <div className="w-12 sm:w-16 h-1 bg-[#004B23] mx-auto mt-4 sm:mt-6 mb-4 sm:mb-6"></div>
-        
-        {/* A classe whitespace-pre-line garante que os \n do LanguageContext funcionem perfeitamente */}
         <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 font-sans max-w-2xl mx-auto leading-relaxed whitespace-pre-line">
           {t.inventoryPage.description}
         </p>
       </section>
 
-      {/* Layout Principal: Menu Lateral + Linha do Tempo */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           
-          {/* Menu Lateral (Navegação de Categorias) */}
           <div className="lg:w-1/3 flex flex-col gap-2">
             {inventoryData.map((category) => (
               <button
@@ -50,7 +42,6 @@ export default function InventarioPage() {
             ))}
           </div>
 
-          {/* Conteúdo da Categoria (Timeline / Linha do Tempo) */}
           <div className="lg:w-2/3 bg-white p-6 sm:p-10 shadow-sm border border-gray-100 min-h-[500px]">
             {activeData && (
               <div className="flex flex-col">
@@ -59,21 +50,18 @@ export default function InventarioPage() {
                 </h2>
 
                 <div className="flex flex-col gap-8 relative">
-                  {/* Fio vertical da linha do tempo */}
                   <div className="absolute top-2 bottom-2 left-[5px] sm:left-[7px] w-[2px] bg-gray-200"></div>
 
                   {activeData.items.map((item, idx) => (
                     <div key={idx} className="relative flex items-start gap-6 sm:gap-8 group">
                       
-                      {/* Marcador quadrado da linha do tempo (Estilo Old Money) */}
                       <div className="relative z-10 w-3 h-3 sm:w-4 sm:h-4 mt-1.5 bg-white border-2 border-[#004B23] rounded-sm group-hover:bg-[#004B23] transition-colors duration-300"></div>
                       
                       <div className="flex flex-col gap-1 sm:gap-2 pb-6 w-full">
                         <span className="font-sans text-xs sm:text-sm font-bold tracking-widest text-[#004B23] uppercase">
-                          {item.year}
+                          {typeof item.year === 'string' ? item.year : item.year[language as Language]}
                         </span>
                         
-                        {/* Outra aplicação essencial do whitespace-pre-line para formatar textos longos e listas */}
                         <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed whitespace-pre-line">
                           {item.title[language as Language]}
                         </p>
@@ -90,7 +78,7 @@ export default function InventarioPage() {
                               <polyline points="15 3 21 3 21 9"></polyline>
                               <line x1="10" y1="14" x2="21" y2="3"></line>
                             </svg>
-                            Ver Link
+                            {t.inventoryPage.viewLink}
                           </a>
                         )}
                       </div>

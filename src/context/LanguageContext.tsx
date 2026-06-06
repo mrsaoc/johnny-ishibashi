@@ -5,16 +5,17 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 export type Language = 'PT' | 'EN' | 'JP';
 
 interface Dictionary {
-  header: { home: string; inventory: string; gallery: string; contact: string; };
+  header: { home: string; inventory: string; gallery: string; testimonials: string; contact: string; };
   footer: { name: string; summary: string; navigation: string; contact: string; linkedIn: string; whatsapp: string; credits1: string; credits2: string; bottomLine: string; };
   home: { title1: string; title2: string; subtitle: string; roles: string[]; ctaInventory: string; ctaGallery: string; trust: string; rakutenTag: string; rakutenTitle: string; rakutenP1_1: string; rakutenP1_strong: string; rakutenP1_2: string; rakutenP2_1: string; rakutenP2_strong: string; rakutenP2_2: string; rakutenPhotoHolder: string; rakutenQuote: string; };
-  inventoryPage: { title: string; description: string; };
+  inventoryPage: { title: string; description: string; viewLink: string; };
   galleryPage: { title: string; description: string; photoAlt: string; captionPlaceholder: string; tabPhotos: string; tabLinks: string; };
+  testimonialsPage: { title: string; description: string; };
 }
 
 const translations: Record<Language, Dictionary> = {
   PT: {
-    header: { home: 'Início', inventory: 'Inventário', gallery: 'Galeria & Links', contact: 'Falar com Johnny' },
+    header: { home: 'Início', inventory: 'Inventário', gallery: 'Galeria & Links', testimonials: 'Depoimentos', contact: 'Falar com Johnny' },
     footer: {
       name: 'JOHNNY ISHIBASHI',
       summary: 'A ponte precisa entre lendas internacionais, instituições globais e o mercado asiático. Excelência em interpretação simultânea e consecutiva.',
@@ -36,6 +37,7 @@ const translations: Record<Language, Dictionary> = {
     inventoryPage: {
       title: 'Inventário Profissional',
       description: 'Um registro histórico de mais de 30 anos de atuação como ponte cultural nas mais prestigiadas instituições governamentais, artísticas e esportivas do mundo.',
+      viewLink: 'Ver Link',
     },
     galleryPage: {
       title: 'Galeria de Mídia',
@@ -44,10 +46,14 @@ const translations: Record<Language, Dictionary> = {
       captionPlaceholder: 'Legenda em elaboração.',
       tabPhotos: 'Galeria de Fotos',
       tabLinks: 'Mídia & Links'
+    },
+    testimonialsPage: {
+      title: 'Depoimentos',
+      description: 'O reconhecimento de líderes, atletas e executivos globais sobre a excelência e a integridade de um trabalho que vai muito além da tradução.',
     }
   },
   EN: {
-    header: { home: 'Home', inventory: 'Inventory', gallery: 'Gallery & Links', contact: 'Contact Johnny' },
+    header: { home: 'Home', inventory: 'Inventory', gallery: 'Gallery & Links', testimonials: 'Testimonials', contact: 'Contact Johnny' },
     footer: {
       name: 'JOHNNY ISHIBASHI',
       summary: 'The precise bridge between international legends, global institutions, and the Asian market. Excellence in simultaneous and consecutive interpretation.',
@@ -69,6 +75,7 @@ const translations: Record<Language, Dictionary> = {
     inventoryPage: {
       title: 'Professional Inventory',
       description: 'A historical record of over 30 years of excellence serving as a cultural bridge across the world\'s most prestigious governmental, artistic, and sporting institutions.',
+      viewLink: 'View Link',
     },
     galleryPage: {
       title: 'Media Gallery',
@@ -77,10 +84,14 @@ const translations: Record<Language, Dictionary> = {
       captionPlaceholder: 'Caption pending.',
       tabPhotos: 'Photo Gallery',
       tabLinks: 'Media & Links'
+    },
+    testimonialsPage: {
+      title: 'Testimonials',
+      description: 'Recognition from global leaders, athletes, and executives regarding the excellence and integrity of a service that goes far beyond translation.',
     }
   },
   JP: {
-    header: { home: 'ホーム', inventory: '経歴・実績', gallery: 'ギャラリー＆リンク', contact: 'お問い合わせ' },
+    header: { home: 'ホーム', inventory: '経歴・実績', gallery: 'ギャラリー＆リンク', testimonials: '推薦者の声', contact: 'お問い合わせ' },
     footer: {
       name: '石橋ジョニー',
       summary: '各方面における異文化間の懸け橋として、卓越した通訳者',
@@ -107,6 +118,7 @@ const translations: Record<Language, Dictionary> = {
     inventoryPage: {
       title: '経歴・実績',
       description: '政府、芸能、スポーツ関係において\n文化の架け橋として３０年以上にわたり卓越した実績',
+      viewLink: 'リンクを見る',
     },
     galleryPage: {
       title: 'ギャラリー＆リンク',
@@ -115,6 +127,10 @@ const translations: Record<Language, Dictionary> = {
       captionPlaceholder: 'キャプション準備中。',
       tabPhotos: '写真ギャラリー',
       tabLinks: 'メディア＆リンク'
+    },
+    testimonialsPage: {
+      title: '推薦者の声',
+      description: '単なる翻訳の枠を超えた、その卓越性と誠実さに対する、世界的なリーダー、アスリート、経営者からの評価。',
     }
   }
 };

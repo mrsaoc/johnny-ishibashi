@@ -75,6 +75,14 @@ export default function Header() {
                     >
                         {t.header.gallery}
                     </Link>
+                    <Link
+                        href="/depoimentos"
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors ${
+                            isActive('/depoimentos') ? 'text-[#004B23]' : 'text-gray-500 hover:text-[#111111]'
+                        }`}
+                    >
+                        {t.header.testimonials}
+                    </Link>
                 </nav>
 
                 <div className="hidden md:flex items-center gap-6 relative z-50">
@@ -173,6 +181,15 @@ export default function Header() {
                         }`}
                     >
                         {t.header.gallery}
+                    </Link>
+                    <Link
+                        href="/depoimentos"
+                        onClick={closeMobileMenu}
+                        className={`text-2xl font-serif font-bold tracking-widest border-b border-gray-100 pb-4 ${
+                            isActive('/depoimentos') ? 'text-[#004B23]' : 'text-[#111111]'
+                        }`}
+                    >
+                        {t.header.testimonials}
                     </Link>
                 </nav>
 
