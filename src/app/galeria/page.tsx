@@ -3,19 +3,17 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { galleryData } from '@/data/gallery';
-import { useLanguage, Language } from '@/context/LanguageContext';
+import { useLanguage } from '@/context/LanguageContext';
 import ImageModal from '@/components/ImageModal';
 
 export default function GaleriaPage() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   
-  // Estado que gerencia qual aba está ativa na tela
   const [activeTab, setActiveTab] = useState<'photos' | 'links'>('photos');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const closeModal = () => setSelectedImage(null);
 
-  // Base de dados local com os links oficiais fornecidos pelo cliente
   const linksData = [
     { 
       title: 'Wikipedia Oficial', 
@@ -42,7 +40,6 @@ export default function GaleriaPage() {
   return (
     <div className="flex flex-col items-center w-full bg-[#F8F9FA] min-h-screen pb-20 sm:pb-32 relative">
       
-      {/* Cabeçalho */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8 text-center">
         <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold text-[#111111] tracking-tight">
           {t.galleryPage.title}
@@ -52,7 +49,6 @@ export default function GaleriaPage() {
           {t.galleryPage.description}
         </p>
 
-        {/* Sistema de Abas (Tab Switcher) */}
         <div className="flex justify-center gap-8 mt-10 border-b border-gray-300">
           <button 
             onClick={() => setActiveTab('photos')}
@@ -69,18 +65,17 @@ export default function GaleriaPage() {
         </div>
       </section>
 
-      {/* Subseção: Fotos */}
       {activeTab === 'photos' && (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-8 animate-in fade-in duration-500">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
             {galleryData.map((item) => {
-              const currentCaption = item.caption ? item.caption[language as Language] : t.galleryPage.captionPlaceholder;
+              // Legenda estritamente em inglês como exigido pelo cliente
+              const currentCaption = item.caption || 'Caption pending.';
               const formattedNumber = item.displayNumber < 10 ? `0${item.displayNumber}` : item.displayNumber;
 
               return (
                 <div key={item.id} className="flex flex-col group cursor-default">
                   
-                  {/* Moldura Clássica */}
                   <div 
                     className="relative aspect-[4/3] w-full bg-[#E5E7EB] border border-gray-200 rounded-sm overflow-hidden shadow-sm transition-shadow duration-300 group-hover:shadow-lg cursor-pointer"
                     onClick={() => setSelectedImage(item.imageUrl)}
@@ -96,7 +91,6 @@ export default function GaleriaPage() {
                         priority={item.displayNumber <= 6} 
                       />
 
-                      {/* Indicador de Expandir */}
                       <div className="absolute bottom-2 right-2 bg-white border border-gray-200 shadow-sm p-1.5 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#004B23" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="15 3 21 3 21 9"></polyline>
@@ -108,7 +102,6 @@ export default function GaleriaPage() {
                     </div>
                   </div>
 
-                  {/* Legenda */}
                   <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 pl-3 sm:pl-4 border-l-2 border-transparent group-hover:border-[#004B23] transition-colors duration-300">
                     <span className="font-serif text-base sm:text-lg font-bold text-[#004B23] leading-none pt-0.5">
                       {formattedNumber}.
@@ -125,7 +118,6 @@ export default function GaleriaPage() {
         </section>
       )}
 
-      {/* Subseção: Links */}
       {activeTab === 'links' && (
         <section className="w-full max-w-3xl mx-auto px-4 sm:px-6 pt-8 animate-in fade-in duration-500">
           <div className="flex flex-col gap-6">
@@ -160,7 +152,6 @@ export default function GaleriaPage() {
         </section>
       )}
 
-      {/* Modal Lightbox */}
       {selectedImage && (
         <ImageModal 
           imageUrl={selectedImage} 
