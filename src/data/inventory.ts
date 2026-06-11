@@ -26,11 +26,11 @@ export const inventoryData: InventoryCategory[] = [
           JP: "Jリーグ プロクラブ通訳:\n• ヴェルディ川崎\n• 浦和レッズ\n• 名古屋グランパスエイト\n• 東京ヴェルディ\n• FC岐阜" 
         } 
       },
-      { year: "2000", title: { PT: "Major League Baseball (MLB) - Primeiro jogo de abertura realizado no Japão", EN: "Major League Baseball (MLB) - First opening game held in Japan", JP: "メジャーリーグベースボール（MLB）- 日本で開催された初の開幕戦" } },
+      { year: "2000", title: { PT: "Major League Baseball (MLB) - Primeiro jogo de abertura realizado no Japão", EN: "Major League Baseball (MLB) - First opening game held in Japan", JP: "メジャーリーグベースボール（MLB）\n開催記念イベントおよび公式記者会見 日英バイリンガル司会" } },
       { year: "2000-2010", title: { PT: "K-1, PRIDE, UFC e Glory", EN: "K-1, PRIDE, UFC & Glory", JP: "K-1、PRIDE、UFC、Glory" } },
       { year: "2000-2018", title: { PT: "Copa Kirin (Intérprete oficial em todas as edições)", EN: "Kirin Cup (Official Interpreter for all editions)", JP: "キリンカップ（全大会公式通訳）" } },
       { year: "2001-2016", title: { PT: "Kirin Challenge Cup (Intérprete oficial em todas as edições do evento)", EN: "Kirin Challenge Cup (Official Interpreter for all editions of the event)", JP: "キリンチャレンジカップ（全大会公式通訳）" } },
-      { year: "2004, 2017", title: { PT: "Eventos de Voleibol - Mundial Masculino, Copa dos Campeões, V.League All Stars", EN: "Volleyball Events - Men's World Championship, World Grand Champions Cup, V.League All Stars", JP: "バレーボール\n世界バレー男子、ワールドグランドチャンピオンズカップ\nVリーグオールスターズ" } },
+      { year: "2004-2017", title: { PT: "Eventos de Voleibol - Mundial Masculino, Copa dos Campeões, V.League All Stars", EN: "Volleyball Events - Men's World Championship, World Grand Champions Cup, V.League All Stars", JP: "バレーボール\n世界バレー男子、ワールドグランドチャンピオンズカップ\nVリーグオールスターズ" } },
       { year: "2005-2016", title: { PT: "Copa do Mundo de Clubes da FIFA (Intérprete oficial em todas as edições sediadas no Japão)", EN: "FIFA Club World Cup (Official interpreter for all editions hosted in Japan)", JP: "FIFAクラブワールドカップ\n日本開催全大会公式通訳" } },
       { year: "2006-2017", title: { PT: "WBC (Clássico Mundial de Beisebol)", EN: "WBC (World Baseball Classic)", JP: "WBC（ワールド・ベースボール・クラシック）" } },
       { year: "2008-2019", title: { PT: "Copa Suruga (Todas as edições)", EN: "Suruga Bank Championship (All editions)", JP: "スルガ銀行チャンピオンシップ（全大会通訳）" } },
@@ -72,11 +72,10 @@ export const inventoryData: InventoryCategory[] = [
     title: { PT: "Mídia e Mestre de Cerimônias", EN: "Media & MC", JP: "メディア・司会・ナレーション" },
     items: [
       { year: "1999-2002", title: { PT: "IPC TV: IPC no Ar - Primeiro apresentador brasileiro de programa de variedades no Japão", EN: "IPC TV: IPC no Ar - First Brazilian host of a variety show in Japan", JP: "IPC TV : IPC no AR\n日本初のブラジル人バラエティ番組司会者" }, url: "https://www.youtube.com/watch?v=R_I_C7O9fK8" },
-      { year: "2000", title: { PT: "Major League Baseball (MLB) - Apresentador bilíngue no evento de lançamento e coletiva oficial de imprensa", EN: "Major League Baseball (MLB) - Bilingual host for launch event and official press conference", JP: "メジャーリーグベースボール（MLB）\n開催記念イベントおよび公式記者会見\n日英バイリンガル司会" } },
       { year: "2001-2018", title: { PT: "NHK World Rádio Japão", EN: "NHK World Radio Japan", JP: "NHKワールド\nラジオ日本" } },
       { year: "2002", title: { PT: "Copa do Mundo de Futebol da FIFA 2002 - Intérprete simultâneo do Zico em todos os canais de televisão do Japão", EN: "2002 FIFA World Cup - Simultaneous interpreter for Zico across all Japanese television networks", JP: "2002 FIFAワールドカップ - ジーコ氏の同時通訳（日本の全テレビ局にて）" } },
       { year: "2002", title: { PT: "Maratona de Honolulu - Apresentador bilíngue inglês-japonês", EN: "Honolulu Marathon - English-Japanese bilingual host", JP: "ホノルルマラソン - 日英バイリンガル司会" } },
-      { year: "2007-2008", title: { PT: "IPC TV: Programa Perfil - Programa de entrevistas com a comunidade brasileira no Japão", EN: "IPC TV: Programa Perfil - Interview program featuring the Brazilian community in Japan", JP: "IPC TV: Programa Perfil - 在日ブラジル人コミュニティ向けインタビュー番組" } },
+      { year: "2007-2008", title: { PT: "IPC TV: Programa Perfil - Programa de entrevistas com a comunidade brasileira no Japão", EN: "IPC TV: Programa Perfil - Interview program featuring the Brazilian community in Japan", JP: "IPC TV: Programa Perfil\n在日ブラジル人コミュニティ向けインタビュー番組" } },
       { year: { PT: "Anos diversos", EN: "Various years", JP: "多年" }, title: { PT: "Travellers TV/SKY PerfecTV - Apresentador bilíngue", EN: "Travellers TV/SKY PerfecTV - Bilingual Host", JP: "Travellers TV / Sky Perfect TV\nバイリンガル司会" } },
       { year: "2017", title: { PT: "FC Barcelona presents Rakuten in Japan - Intérprete da coletiva oficial de imprensa", EN: "FC Barcelona presents Rakuten in Japan - Official press conference interpreter", JP: "FCバルセロナ\n楽天プレゼンツ・イン・ジャパン\n公式記者会見通訳" }, url: "https://youtu.be/jmJKbeadac0?si=hidOtEtLKAR0olAM" },
       { year: "2018", title: { PT: "Adidas - Encontros com Xabi Alonso e David Villa", EN: "Adidas - Meetings with Xabi Alonso & David Villa", JP: "アディダス・イベント\nシャビ・アロンソ、ダビド・ビジャ" } },
