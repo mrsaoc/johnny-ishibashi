@@ -75,7 +75,7 @@ const translations: Record<Language, Dictionary> = {
       subtitle: 'Fluent in four languages, Johnny Ishibashi acts as a mentor and facilitator of connections between global personalities, corporations, governments, and cultural projects.\nTechnical precision, cultural sensitivity, and experience alongside major international names.',
       roles: ['International Interpreter', 'Institutional Communicator', 'Diplomatic Facilitator', 'Language Professor', 'Mentor', 'Cultural Consultant'],
       ctaInventory: 'Explore Inventory', ctaGallery: 'View Gallery', trust: 'Excellence validated alongside',
-      institutions: 'MOFA • JICA • JETRO • Tokyo Immigration Services Agency • Daini Tokyo Bar Association',
+      institutions: 'MOFA • JICA • JETRO • Tokyo Immigration Bureau • Daini Tokyo Bar Association',
       rakutenTag: 'The Art of Interpretation', rakutenTitle: 'Respecting the spotlight.',
       rakutenP1_1: 'His ability to convey not just the words, but the ', rakutenP1_strong: 'faithful tone and humor', rakutenP1_2: ' of each personality has made him one of the most trusted interpreters for global brands and Asian tours.',
       rakutenP2_1: 'One of the defining moments of his strategic excellence occurred at the ', rakutenP2_strong: 'Rakuten event in 2017', rakutenP2_2: ', acting in the official press conference ensuring fluid communication between Lionel Messi, Neymar, Gerard Piqué, and Arda Turan.',
