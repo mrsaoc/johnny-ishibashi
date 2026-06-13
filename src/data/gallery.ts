@@ -6,13 +6,12 @@ export interface GalleryItem {
 }
 
 // 1. Array de IDs Ativos (Mapeamento exato)
-// A foto 3 foi adicionada na terceira posição, empurrando automaticamente o restante (+1).
+// O ID 110 (card 74) foi removido.
 const ACTIVE_IDS = [
   1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 15, 16, 18, 27, 29, 19, 21, 24, 25, 26, 
   31, 32, 34, 35, 37, 38, 41, 42, 44, 45, 46, 48, 49, 55, 56, 57, 58, 59, 
   62, 63, 65, 66, 67, 68, 70, 72, 73, 74, 75, 77, 79, 81, 82, 83, 84, 86, 
-  87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109, 
-  110 // ID 110 = Print do Facebook (Udon)
+  87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109
 ];
 
 // 2. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
@@ -77,7 +76,7 @@ const customCaptions: Record<number, string> = {
   87: 'With Kazu Miura',
   88: 'Rakuten - FC Barcelona Partnership Press Conference',
   89: 'TV Show (Sekai Fushigi Hakken) – TBS Japan',
-  92: 'With Nelsinho Baptista& Yasutaro Matsuki',
+  92: 'With Nelsinho Baptista & Yasutaro Matsuki',
   93: 'With Valdir Espinosa & Rivelino Serpa',
   96: 'Rugby World Cup 2019',
   98: 'Japan National Futsal Team’s Bench',
@@ -89,13 +88,13 @@ const customCaptions: Record<number, string> = {
   106: 'Perfil (IPC TV)',
   107: 'IPC no AR (IPC TV)',
   108: 'IPC no AR (IPC TV)',
-  109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil',
-  110: 'Udon preparation - MIE Kenjinkai'
+  109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil'
 };
 
-// 3. URLs Customizadas (Para imagens que não seguem o padrão "foto[id].jpeg")
+// 3. URLs Customizadas
+// A imagem depoimento1.jpeg foi transferida para o ID 109 (Card 73)
 const customUrls: Record<number, string> = {
-  110: '/assets/depoimento1.jpeg'
+  109: '/assets/depoimento1.jpeg'
 };
 
 // 4. Exportação Final
