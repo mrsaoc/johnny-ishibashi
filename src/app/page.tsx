@@ -85,19 +85,10 @@ export default function HomePage() {
               <span>J-League</span>
             </div>
             
-            {language === 'JP' && (
-              <div className="flex flex-wrap justify-center gap-x-3 sm:gap-x-6 gap-y-2 text-xs sm:text-sm font-sans text-gray-600 px-4 mt-2">
-                <span>外務省</span>
-                <span className="text-gray-300 hidden sm:inline">•</span>
-                <span>JICA</span>
-                <span className="text-gray-300 hidden sm:inline">•</span>
-                <span>JETRO</span>
-                <span className="text-gray-300 hidden sm:inline">•</span>
-                <span>東京入国管理局</span>
-                <span className="text-gray-300 hidden sm:inline">•</span>
-                <span>東京第二弁護士会</span>
-              </div>
-            )}
+            {/* Instituições dinâmicas nos três idiomas */}
+            <div className="text-center text-xs sm:text-sm font-sans text-gray-600 px-4 mt-2 max-w-3xl mx-auto leading-relaxed">
+              {t.home.institutions}
+            </div>
           </div>
 
         </div>

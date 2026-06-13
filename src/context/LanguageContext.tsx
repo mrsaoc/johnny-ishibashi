@@ -7,7 +7,15 @@ export type Language = 'PT' | 'EN' | 'JP';
 interface Dictionary {
   header: { home: string; inventory: string; gallery: string; testimonials: string; contact: string; };
   footer: { name: string; summary: string; navigation: string; contact: string; linkedIn: string; whatsapp: string; credits1: string; credits2: string; bottomLine: string; };
-  home: { title1: string; title2: string; subtitle: string; roles: string[]; ctaInventory: string; ctaGallery: string; trust: string; rakutenTag: string; rakutenTitle: string; rakutenP1_1: string; rakutenP1_strong: string; rakutenP1_2: string; rakutenP2_1: string; rakutenP2_strong: string; rakutenP2_2: string; rakutenPhotoHolder: string; rakutenQuote: string; };
+  home: { 
+    title1: string; title2: string; subtitle: string; roles: string[]; 
+    ctaInventory: string; ctaGallery: string; trust: string; 
+    institutions: string; // <--- Nova propriedade adicionada
+    rakutenTag: string; rakutenTitle: string; rakutenP1_1: string; 
+    rakutenP1_strong: string; rakutenP1_2: string; rakutenP2_1: string; 
+    rakutenP2_strong: string; rakutenP2_2: string; rakutenPhotoHolder: string; 
+    rakutenQuote: string; 
+  };
   inventoryPage: { title: string; description: string; viewLink: string; };
   galleryPage: { title: string; description: string; photoAlt: string; captionPlaceholder: string; tabPhotos: string; tabLinks: string; };
   testimonialsPage: { title: string; description: string; };
@@ -28,6 +36,7 @@ const translations: Record<Language, Dictionary> = {
       subtitle: 'Fluente em quatro idiomas, Johnny Ishibashi atua como mentor e facilitador de conexões entre personalidades globais, empresas, governos e projetos culturais.\nPrecisão técnica, sensibilidade cultural e experiência ao lado de grandes nomes internacionais.',
       roles: ['Intérprete Internacional', 'Comunicador Institucional', 'Facilitador Diplomático', 'Professor de Idiomas', 'Mentor', 'Consultor Cultural'],
       ctaInventory: 'Explorar Inventário', ctaGallery: 'Ver Galeria', trust: 'Excelência validada ao lado de',
+      institutions: 'Ministério dos Negócios Estrangeiros do Japão • JICA • JETRO • Departamento de Imigração de Tóquio • Ordem dos Advogados de Tóquio',
       rakutenTag: 'A Arte da Interpretação', rakutenTitle: 'Respeitando o protagonismo.',
       rakutenP1_1: 'Sua capacidade de transmitir não apenas as palavras, mas o ', rakutenP1_strong: 'tom e o humor fiel', rakutenP1_2: ' de cada personalidade o tornou um dos intérpretes mais confiáveis para as grandes marcas globais e turnês asiáticas.',
       rakutenP2_1: 'Um dos momentos que definem sua excelência estratégica ocorreu no evento da ', rakutenP2_strong: 'Rakuten em 2017', rakutenP2_2: ', atuando na coletiva de imprensa oficial garantindo uma comunicação fluida entre Lionel Messi, Neymar, Gerard Piqué e Arda Turan.',
@@ -66,6 +75,7 @@ const translations: Record<Language, Dictionary> = {
       subtitle: 'Fluent in four languages, Johnny Ishibashi acts as a mentor and facilitator of connections between global personalities, corporations, governments, and cultural projects.\nTechnical precision, cultural sensitivity, and experience alongside major international names.',
       roles: ['International Interpreter', 'Institutional Communicator', 'Diplomatic Facilitator', 'Language Professor', 'Mentor', 'Cultural Consultant'],
       ctaInventory: 'Explore Inventory', ctaGallery: 'View Gallery', trust: 'Excellence validated alongside',
+      institutions: 'Ministry of Foreign Affairs of Japan • JICA • JETRO • Tokyo Immigration Bureau • Tokyo Bar Association',
       rakutenTag: 'The Art of Interpretation', rakutenTitle: 'Respecting the spotlight.',
       rakutenP1_1: 'His ability to convey not just the words, but the ', rakutenP1_strong: 'faithful tone and humor', rakutenP1_2: ' of each personality has made him one of the most trusted interpreters for global brands and Asian tours.',
       rakutenP2_1: 'One of the defining moments of his strategic excellence occurred at the ', rakutenP2_strong: 'Rakuten event in 2017', rakutenP2_2: ', acting in the official press conference ensuring fluid communication between Lionel Messi, Neymar, Gerard Piqué, and Arda Turan.',
@@ -104,6 +114,7 @@ const translations: Record<Language, Dictionary> = {
       subtitle: '4か国語（日本語、ポルトガル語、スペイン語、英語）に堪能な\n石橋ジョニーは、政府、企業、文化と各方面で、\n著名人を含む多くの方々の通訳者として活躍。\n30年以上に及ぶ仕事とキャリアによる知識と経験に基づき、\n議論の質を高め、目的達成のための結論を導く通訳。',
       roles: ['国際通訳者', '組織広報', '外交ファシリテーター', '語学講師', 'メンター', '文化コンサルタント'],
       ctaInventory: '経歴を見る', ctaGallery: 'ギャラリーを見る', trust: '共に検証された卓越性',
+      institutions: '外務省 • JICA • JETRO • 東京入国管理局 • 東京第二弁護士会',
       rakutenTag: '依頼者に寄り添う',
       rakutenTitle: '',
       rakutenP1_1: '依頼者の側に立ち、双方の文化的背景を理解した上で\n適格な言葉で円滑なコミュニケーションで\n相互理解とともに結論を導きます。',
