@@ -2,101 +2,103 @@ export interface GalleryItem {
   id: number;
   displayNumber: number;
   imageUrl: string;
-  caption?: string;
+  caption?: string; // Apenas inglês, conforme aprovado pelo cliente
 }
 
-// 1. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
+// 1. Array de IDs Ativos (Mapeamento exato)
+// A foto 3 foi adicionada na terceira posição, empurrando automaticamente o restante (+1).
+const ACTIVE_IDS = [
+  1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 15, 16, 18, 27, 29, 19, 21, 24, 25, 26, 
+  31, 32, 34, 35, 37, 38, 41, 42, 44, 45, 46, 48, 49, 55, 56, 57, 58, 59, 
+  62, 63, 65, 66, 67, 68, 70, 72, 73, 74, 75, 77, 79, 81, 82, 83, 84, 86, 
+  87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109, 
+  110 // ID 110 = Print do Facebook (Udon)
+];
+
+// 2. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
 const customCaptions: Record<number, string> = {
   1: 'Tokyo Motor Show — Volkswagen - 4 Motion',
   2: 'With Nelsinho Batista (Verdy Kawasaki) & Shigeo Nagashima (Tokyo Giants)',
-  3: 'Neymar & Lionel Messi (FC Barcelona presents Rakuten in Japan)',
-  4: 'With Émerson Leão (Verdy Kawasaki)',
-  5: 'With Naomi Grace (3rd Joint Concert)',
-  6: 'IPC TV (Field Report)',
-  8: 'With Valdir Espinosa (Verdy Kawasaki)',
-  9: 'With Ana Maria Braga (IPC no AR)',
-  10: 'With Satoru Nakajima (IPC no AR)',
-  11: 'With Ronaldinho (2002 FIFA World Cup)',
-  12: 'With Émerson Leão (Verdy Kawasaki)',
-  13: 'With Sammy Sosa & Masato Yoshii',
-  14: 'With Ronaldinho (2002 FIFA World Cup)',
-  15: 'Kinky Boots Japanese Cast',
-  16: 'Kinky Boots',
-  17: 'With Argel (Verdy Kawasaki)',
-  18: 'With Nicanor de Carvalho (Verdy Kawasaki)',
-  19: 'Kinky Boots Credits',
-  20: 'With Hal Luftig (Kinky Boots)',
-  21: 'Kinky Boots Opening Night Cake',
-  23: 'With Nicanor de Carvalho (Verdy Kawasaki)',
-  24: 'Team Cuba (World Baseball Classic)',
-  25: 'With Valdir Espinosa (Verdy Kawasaki)',
-  26: 'With Sergio Sapo (Japan National Team - Futsal)',
-  27: 'Miss Universe Japan (25ans Magazine)',
-  28: 'IPC TV (Perfil Talk Show Host)',
-  30: 'NHK World Radio Japan',
-  31: 'Team Iran (FIVB Volleyball Men\'s World Grand Champions Cup)',
-  33: 'With Xabi Alonso (Yahoo News)',
-  34: 'With Brazilian National Volleyball Team',
-  35: 'With Yūki Ishikawa',
-  37: 'FutbolNet Seminar by FC Barcelona',
-  38: 'With Marcel Desailly',
-  40: 'With Japan Men’s National Futsal Team (2004 AFC Futsal Championship)',
-  41: 'Spirit of Zico by Carlos Kubo',
-  42: 'Spirit of Zico by Carlos Kubo',
-  43: 'Spirit of Zico by Carlos Kubo',
-  44: 'With Zico (Spirit of Zico by Carlos Kubo)',
-  46: 'With Manchester City (EuroJapan Cup 2019)',
-  47: 'With Aledmys Diaz & Frank Morejón (5th World University Baseball Championship)',
-  49: 'Rugby World Cup 2019',
-  50: 'EAFF E-1 Football Championship in Japan 2017 Final',
-  51: 'Foodex Japan - Brazil Pavilion',
-  52: 'FC Gifu 2016',
-  53: 'With Zico & Sérgio Sapo',
-  55: 'EAFF E-1 Football Championship in Japan 2017 Final',
-  56: 'After-Match Interview',
-  57: 'Xabi Alonso Japan Visit 2018 by Adidas',
-  58: 'Interpreter’s Seat',
-  59: 'With David Villa (Penalty Soccer Clinic)',
-  60: 'IPC no AR (IPC TV)',
-  61: 'With Faf de Klerk (Rugby World Cup 2019)',
-  62: 'Japan National Futsal Team’s Bench',
-  63: 'With Émerson Leão (Emperor’s Cup 1996)',
-  64: 'J. League All-Star Soccer 1996',
-  66: 'BLAST!!! The Music of Disney',
-  67: 'With Kazu Miura',
-  68: 'Rakuten - FC Barcelona Partnership Press Conference',
-  69: 'TV Show (Sekai Fushigi Hakken) – TBS Japan',
-  71: 'With Nelsinho & Yasutaro Matsuki',
-  72: 'With Valdir Espinosa & Rivelino Serpa',
-  75: 'Rugby World Cup 2019',
-  77: 'Japan National Futsal Team’s Bench',
-  78: 'With Zico and Mrs. Sandra',
-  79: 'TV Show (Kokogahen Dayo Nihonjin) – TBS Japan',
-  80: 'With Hulk, Diego Souza & Gilmar',
-  81: 'With Neil Schon, Steve Augeri, and Jonathan Cain (Journey in Japan)',
-  83: 'With Shinkichi Kikuchi in Kolkata, India',
-  85: 'Perfil (IPC TV)',
-  86: 'IPC no AR (IPC TV)',
-  87: 'IPC no AR (IPC TV)',
-  88: 'Preparations for Expo Japan 2025 – São Paulo, Brazil',
-  109: 'Udon preparation - MIE Kenjinkai'
+  3: 'With Pele @ 2002 FIFA World Cup Sponsorship Program',
+  4: 'Neymar & Lionel Messi (FC Barcelona presents Rakuten in Japan)',
+  5: 'With Émerson Leão (Verdy Kawasaki)',
+  6: 'With Naomi Grace (3rd Joint Concert)',
+  7: 'IPC TV (Field Report)',
+  10: 'With Valdir Espinosa (Verdy Kawasaki)',
+  11: 'With Ana Maria Braga (IPC no AR)',
+  12: 'With Satoru Nakajima (IPC no AR)',
+  13: 'With Ronaldinho (2002 FIFA World Cup)',
+  15: 'With Émerson Leão (Verdy Kawasaki)',
+  16: 'With Sammy Sosa & Masato Yoshii',
+  18: 'With Ronaldinho (2002 FIFA World Cup)',
+  27: 'Kinky Boots Japanese Cast',
+  29: 'Kinky Boots',
+  19: 'With Argel (Verdy Kawasaki)',
+  21: 'With Nicanor de Carvalho (Verdy Kawasaki)',
+  24: 'Kinky Boots Credits',
+  25: 'With Hal Luftig (Kinky Boots)',
+  26: 'Kinky Boots Opening Night Cake',
+  31: 'With Nicanor de Carvalho (Verdy Kawasaki)',
+  32: 'Team Cuba (World Baseball Classic)',
+  34: 'With Valdir Espinosa (Verdy Kawasaki)',
+  35: 'With Sergio Sapo (Japan National Team - Futsal)',
+  37: 'Miss Universe Japan (25ans Magazine)',
+  38: 'IPC TV (Perfil Talk Show Host)',
+  41: 'NHK World Radio Japan',
+  42: 'Team Iran (FIVB Volleyball Men\'s World Grand Champions Cup)',
+  44: 'With Xabi Alonso (Yahoo News)',
+  45: 'With Brazilian National Volleyball Team',
+  46: 'With Yūki Ishikawa',
+  48: 'FutbolNet Seminar by FC Barcelona',
+  49: 'With Marcel Desailly',
+  55: 'With Japan Men’s National Futsal Team (2004 AFC Futsal Championship)',
+  56: 'Spirit of Zico by Carlos Kubo',
+  57: 'Spirit of Zico by Carlos Kubo',
+  58: 'Spirit of Zico by Carlos Kubo',
+  59: 'With Zico (Spirit of Zico by Carlos Kubo)',
+  62: 'With Manchester City (EuroJapan Cup 2019)',
+  63: 'With Aledmys Diaz & Frank Morejón (5th World University Baseball Championship)',
+  65: 'Rugby World Cup 2019',
+  66: 'EAFF E-1 Football Championship in Japan 2017 Final',
+  67: 'Foodex Japan - Brazil Pavilion',
+  68: 'FC Gifu 2016',
+  70: 'With Zico & Sérgio Sapo',
+  72: 'EAFF E-1 Football Championship in Japan 2017 Final',
+  73: 'After-Match Interview',
+  74: 'Xabi Alonso Japan Visit 2018 by Adidas',
+  75: 'Interpreter’s Seat',
+  77: 'With David Villa (Penalty Soccer Clinic)',
+  79: 'IPC no AR (IPC TV)',
+  81: 'With Faf de Klerk (Rugby World Cup 2019)',
+  82: 'Japan National Futsal Team’s Bench',
+  83: 'With Émerson Leão (Emperor’s Cup 1996)',
+  84: 'J. League All-Star Soccer 1996',
+  86: 'BLAST!!! The Music of Disney',
+  87: 'With Kazu Miura',
+  88: 'Rakuten - FC Barcelona Partnership Press Conference',
+  89: 'TV Show (Sekai Fushigi Hakken) – TBS Japan',
+  92: 'With Nelsinho & Yasutaro Matsuki',
+  93: 'With Valdir Espinosa & Rivelino Serpa',
+  96: 'Rugby World Cup 2019',
+  98: 'Japan National Futsal Team’s Bench',
+  99: 'With Zico and Mrs. Sandra',
+  100: 'TV Show (Kokogahen Dayo Nihonjin) – TBS Japan',
+  101: 'With Hulk, Diego Souza & Gilmar',
+  102: 'With Neil Schon, Steve Augeri, and Jonathan Cain (Journey in Japan)',
+  104: 'With Shinkichi Kikuchi in Kolkata, India',
+  106: 'Perfil (IPC TV)',
+  107: 'IPC no AR (IPC TV)',
+  108: 'IPC no AR (IPC TV)',
+  109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil',
+  110: 'Udon preparation - MIE Kenjinkai'
 };
 
-// 2. Lista de IDs Ativos (Whitelist)
-// O sistema renderizará APENAS as fotos declaradas nesta matriz, na ordem exata.
-const ACTIVE_IDS = [
-  1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 
-  27, 28, 30, 31, 33, 34, 35, 37, 38, 40, 41, 42, 43, 44, 46, 47, 49, 50, 51, 52, 53, 55, 
-  56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 72, 75, 77, 78, 79, 80, 81, 83, 
-  85, 86, 87, 88, 109
-];
-
-// 3. URLs Customizadas (Para imagens com nomes que fogem do padrão "fotoX.jpeg")
+// 3. URLs Customizadas (Para imagens que não seguem o padrão "foto[id].jpeg")
 const customUrls: Record<number, string> = {
-  109: '/assets/depoimento1.jpeg'
+  110: '/assets/depoimento1.jpeg'
 };
 
-// 4. Execução e Exportação
+// 4. Exportação Final
 export const galleryData: GalleryItem[] = ACTIVE_IDS.map((id, index) => ({
   id,
   displayNumber: index + 1,
