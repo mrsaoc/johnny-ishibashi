@@ -18,8 +18,8 @@ const ACTIVE_IDS = [
 // 2. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
 const customCaptions: Record<number, string> = {
   1: 'Tokyo Motor Show — Volkswagen - 4 Motion',
-  2: 'With Nelsinho Batista (Verdy Kawasaki) & Shigeo Nagashima (Tokyo Giants)',
-  // O ID 3 receberá 'Caption pending.' automaticamente até você preenchê-lo.
+  2: 'With Nelsinho Baptista (Verdy Kawasaki) & Shigeo Nagashima (Tokyo Giants)',
+  3: 'With Pele @ 2002 FIFA World Cup Sponsorship Program',
   4: 'Neymar & Lionel Messi (FC Barcelona presents Rakuten in Japan)',
   5: 'With Émerson Leão (Verdy Kawasaki)',
   6: 'With Naomi Grace (3rd Joint Concert)',
@@ -77,7 +77,7 @@ const customCaptions: Record<number, string> = {
   87: 'With Kazu Miura',
   88: 'Rakuten - FC Barcelona Partnership Press Conference',
   89: 'TV Show (Sekai Fushigi Hakken) – TBS Japan',
-  92: 'With Nelsinho & Yasutaro Matsuki',
+  92: 'With Nelsinho Baptista & Yasutaro Matsuki',
   93: 'With Valdir Espinosa & Rivelino Serpa',
   96: 'Rugby World Cup 2019',
   98: 'Japan National Futsal Team’s Bench',
