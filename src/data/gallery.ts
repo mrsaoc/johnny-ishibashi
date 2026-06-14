@@ -6,19 +6,20 @@ export interface GalleryItem {
 }
 
 // 1. Array de IDs Ativos (Mapeamento exato)
-// O ID 110 (card 74) foi removido.
+// Adicionados os novos IDs (209 ao 223) no final da lista para as novas fotos e certificados.
 const ACTIVE_IDS = [
   1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 15, 16, 18, 27, 29, 19, 21, 24, 25, 26, 
   31, 32, 34, 35, 37, 38, 41, 42, 44, 45, 46, 48, 49, 55, 56, 57, 58, 59, 
   62, 63, 65, 66, 67, 68, 70, 72, 73, 74, 75, 77, 79, 81, 82, 83, 84, 86, 
-  87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109
+  87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109,
+  209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
 ];
 
 // 2. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
 const customCaptions: Record<number, string> = {
   1: 'Tokyo Motor Show — Volkswagen - 4 Motion',
-  2: 'With Nelsinho Baptista (Verdy Kawasaki) & Shigeo Nagashima (Tokyo Giants)',
-  3: 'With Pele @ 2002 FIFA World Cup Sponsorship Program',
+  2: 'With Nelsinho Batista (Verdy Kawasaki) & Shigeo Nagashima (Tokyo Giants)',
+  // O ID 3 receberá 'Caption pending.' automaticamente até você preenchê-lo.
   4: 'Neymar & Lionel Messi (FC Barcelona presents Rakuten in Japan)',
   5: 'With Émerson Leão (Verdy Kawasaki)',
   6: 'With Naomi Grace (3rd Joint Concert)',
@@ -76,7 +77,7 @@ const customCaptions: Record<number, string> = {
   87: 'With Kazu Miura',
   88: 'Rakuten - FC Barcelona Partnership Press Conference',
   89: 'TV Show (Sekai Fushigi Hakken) – TBS Japan',
-  92: 'With Nelsinho Baptista & Yasutaro Matsuki',
+  92: 'With Nelsinho & Yasutaro Matsuki',
   93: 'With Valdir Espinosa & Rivelino Serpa',
   96: 'Rugby World Cup 2019',
   98: 'Japan National Futsal Team’s Bench',
@@ -88,13 +89,45 @@ const customCaptions: Record<number, string> = {
   106: 'Perfil (IPC TV)',
   107: 'IPC no AR (IPC TV)',
   108: 'IPC no AR (IPC TV)',
-  109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil'
+  109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil',
+  
+  // Novas imagens
+  209: 'Shonen Magazine',
+  210: 'N1 Certificate of Japanese-Language Proficiency Test',
+  211: 'Certificate of the EIKEN Test in Practical English Proficiency',
+  212: 'Mindfulness and Stress Management Certificate',
+  213: 'Certificate of Intelligence',
+  214: 'TESOL Certificate',
+  215: 'TEYL Certificate, Brazil-Japan Law and Judicial System: New Trends',
+  216: 'Event Safety and Operational Management',
+  217: 'Medical Language Interpreter Certification',
+  218: 'Vamos Magazine by H.I.S BRASIL TURISMO',
+  219: 'Japanese-Portuguese Translation Mentorship',
+  220: 'ChatGPT',
+  221: 'DALL-E',
+  222: 'Jasper AI',
+  223: 'MidJourney'
 };
 
 // 3. URLs Customizadas
-// A imagem depoimento1.jpeg foi transferida para o ID 109 (Card 73)
+// Mapeamento exato das extensões .jpg, .jpeg e .png fornecidas.
 const customUrls: Record<number, string> = {
-  109: '/assets/depoimento1.jpeg'
+  109: '/assets/depoimento1.jpeg',
+  209: '/assets/foto109.jpg',
+  210: '/assets/foto110.jpeg',
+  211: '/assets/foto111.jpg',
+  212: '/assets/foto112.jpg',
+  213: '/assets/foto113.jpg',
+  214: '/assets/foto114.jpg',
+  215: '/assets/foto115.jpg',
+  216: '/assets/foto116.jpg',
+  217: '/assets/foto117.jpg',
+  218: '/assets/foto118.jpg',
+  219: '/assets/foto119.png',
+  220: '/assets/foto120.jpg',
+  221: '/assets/foto121.jpg',
+  222: '/assets/foto122.jpg',
+  223: '/assets/foto123.jpg'
 };
 
 // 4. Exportação Final

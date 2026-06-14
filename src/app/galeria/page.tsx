@@ -34,6 +34,16 @@ export default function GaleriaPage() {
       title: 'Chelsea FC vs Kawasaki Frontale (2019)', 
       url: 'https://www.chelseafc.com/en/video/highlights--kawasaki-frontale--a--19-20-h1m3g2ate61dnjlf0vfqgavgc7zspecr', 
       description: 'J.League Super Challenge: Cobertura oficial e acompanhamento da visita da lenda Marcel Desailly.' 
+    },
+    {
+      title: 'Pai D\'égua Online',
+      url: 'https://paideguaonline.com.br/johnny-ishibashi-o-interprete-dos-astros',
+      description: 'Johnny Ishibashi: O intérprete dos astros (Entrevista e cobertura).'
+    },
+    {
+      title: 'Vamos Magazine (Vol. 25)',
+      url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2023/01/VamosVol25.pdf',
+      description: 'Vamos Magazine by H.I.S BRASIL TURISMO (Edição em PDF).'
     }
   ];
 
@@ -69,7 +79,6 @@ export default function GaleriaPage() {
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-8 animate-in fade-in duration-500">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
             {galleryData.map((item) => {
-              // Legenda estritamente em inglês como exigido pelo cliente
               const currentCaption = item.caption || 'Caption pending.';
               const formattedNumber = item.displayNumber < 10 ? `0${item.displayNumber}` : item.displayNumber;
 
