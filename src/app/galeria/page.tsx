@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { galleryData } from '@/data/gallery';
+import { photoData, certificateData } from '@/data/gallery';
 import { useLanguage } from '@/context/LanguageContext';
 import ImageModal from '@/components/ImageModal';
 
 export default function GaleriaPage() {
   const { t } = useLanguage();
   
-  const [activeTab, setActiveTab] = useState<'photos' | 'links'>('photos');
+  const [activeTab, setActiveTab] = useState<'photos' | 'certificates' | 'links'>('photos');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const closeModal = () => setSelectedImage(null);
@@ -41,11 +41,13 @@ export default function GaleriaPage() {
       description: 'Johnny Ishibashi: O intérprete dos astros (Entrevista e cobertura).'
     },
     {
-      title: 'Vamos Magazine (Vol. 35)',
-      url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2023/01/VamosVol35.pdf',
+      title: 'Vamos Magazine',
+      url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2025/07/HIS-Vamos-Vol35-Ebook.pdf',
       description: 'Vamos Magazine by H.I.S BRASIL TURISMO (Edição em PDF).'
     }
   ];
+
+  const currentGalleryData = activeTab === 'photos' ? photoData : certificateData;
 
   return (
     <div className="flex flex-col items-center w-full bg-[#F8F9FA] min-h-screen pb-20 sm:pb-32 relative">
@@ -59,26 +61,32 @@ export default function GaleriaPage() {
           {t.galleryPage.description}
         </p>
 
-        <div className="flex justify-center gap-8 mt-10 border-b border-gray-300">
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-10 border-b border-gray-300">
           <button 
             onClick={() => setActiveTab('photos')}
-            className={`pb-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'photos' ? 'text-[#004B23] border-b-2 border-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+            className={`pb-4 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'photos' ? 'text-[#004B23] border-b-2 border-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
           >
             {t.galleryPage.tabPhotos}
           </button>
           <button 
+            onClick={() => setActiveTab('certificates')}
+            className={`pb-4 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'certificates' ? 'text-[#004B23] border-b-2 border-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+          >
+            {t.galleryPage.tabCertificates}
+          </button>
+          <button 
             onClick={() => setActiveTab('links')}
-            className={`pb-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'links' ? 'text-[#004B23] border-b-2 border-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
+            className={`pb-4 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'links' ? 'text-[#004B23] border-b-2 border-[#004B23]' : 'text-gray-400 hover:text-[#111111]'}`}
           >
             {t.galleryPage.tabLinks}
           </button>
         </div>
       </section>
 
-      {activeTab === 'photos' && (
+      {(activeTab === 'photos' || activeTab === 'certificates') && (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-8 animate-in fade-in duration-500">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
-            {galleryData.map((item) => {
+            {currentGalleryData.map((item) => {
               const currentCaption = item.caption || 'Caption pending.';
               const formattedNumber = item.displayNumber < 10 ? `0${item.displayNumber}` : item.displayNumber;
 

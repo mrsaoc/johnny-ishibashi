@@ -17,7 +17,10 @@ interface Dictionary {
     rakutenQuote: string; 
   };
   inventoryPage: { title: string; description: string; viewLink: string; };
-  galleryPage: { title: string; description: string; photoAlt: string; captionPlaceholder: string; tabPhotos: string; tabLinks: string; };
+  galleryPage: { 
+    title: string; description: string; photoAlt: string; captionPlaceholder: string; 
+    tabPhotos: string; tabCertificates: string; tabLinks: string; 
+  };
   testimonialsPage: { title: string; description: string; };
 }
 
@@ -51,9 +54,10 @@ const translations: Record<Language, Dictionary> = {
     galleryPage: {
       title: 'Galeria de Mídia',
       description: 'Registros visuais e documentais de atuações ao lado de grandes personalidades, eventos institucionais e coberturas da grande mídia internacional.',
-      photoAlt: 'Registro fotográfico',
+      photoAlt: 'Registro',
       captionPlaceholder: 'Legenda em elaboração.',
       tabPhotos: 'Galeria de Fotos',
+      tabCertificates: 'Certificados',
       tabLinks: 'Mídia & Links'
     },
     testimonialsPage: {
@@ -90,9 +94,10 @@ const translations: Record<Language, Dictionary> = {
     galleryPage: {
       title: 'Media Gallery',
       description: 'Visual and documentary records of performances alongside global personalities, institutional events, and major international media coverage.',
-      photoAlt: 'Photographic record',
+      photoAlt: 'Record',
       captionPlaceholder: 'Caption pending.',
       tabPhotos: 'Photo Gallery',
+      tabCertificates: 'Certificates',
       tabLinks: 'Media & Links'
     },
     testimonialsPage: {
@@ -137,6 +142,7 @@ const translations: Record<Language, Dictionary> = {
       photoAlt: '写真記録',
       captionPlaceholder: 'キャプション準備中。',
       tabPhotos: '写真ギャラリー',
+      tabCertificates: '資格・認定証',
       tabLinks: 'メディア＆リンク'
     },
     testimonialsPage: {

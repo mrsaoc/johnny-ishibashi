@@ -2,17 +2,20 @@ export interface GalleryItem {
   id: number;
   displayNumber: number;
   imageUrl: string;
-  caption?: string; // Apenas inglês, conforme aprovado pelo cliente
+  caption?: string; // Apenas inglês
 }
 
-// 1. Array de IDs Ativos (Mapeamento exato)
-// Adicionados os novos IDs (209 ao 223) no final da lista para as novas fotos e certificados.
-const ACTIVE_IDS = [
+// 1. Arrays Separados para Fotos e Certificados
+const PHOTO_IDS = [
   1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 15, 16, 18, 27, 29, 19, 21, 24, 25, 26, 
   31, 32, 34, 35, 37, 38, 41, 42, 44, 45, 46, 48, 49, 55, 56, 57, 58, 59, 
   62, 63, 65, 66, 67, 68, 70, 72, 73, 74, 75, 77, 79, 81, 82, 83, 84, 86, 
   87, 88, 89, 92, 93, 96, 98, 99, 100, 101, 102, 104, 106, 107, 108, 109,
-  209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
+  209 // Manga Character continua na aba de fotos
+];
+
+const CERTIFICATE_IDS = [
+  210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
 ];
 
 // 2. Dicionário Definitivo de Legendas (Exclusivo em Inglês)
@@ -91,8 +94,7 @@ const customCaptions: Record<number, string> = {
   108: 'IPC no AR (IPC TV)',
   109: 'Preparations for Expo Japan 2025 – São Paulo, Brazil',
   
-  // Novas imagens
-  209: 'Shonen Magazine',
+  209: 'Me as a Manga Character.',
   210: 'N1 Certificate of Japanese-Language Proficiency Test',
   211: 'Certificate of the EIKEN Test in Practical English Proficiency',
   212: 'Mindfulness and Stress Management Certificate',
@@ -109,8 +111,7 @@ const customCaptions: Record<number, string> = {
   223: 'MidJourney'
 };
 
-// 3. URLs Customizadas
-// Mapeamento exato das extensões .jpg, .jpeg e .png fornecidas.
+// 3. URLs Customizadas (Extensões mapeadas perfeitamente)
 const customUrls: Record<number, string> = {
   109: '/assets/depoimento1.jpeg',
   209: '/assets/foto109.jpg',
@@ -130,8 +131,15 @@ const customUrls: Record<number, string> = {
   223: '/assets/foto123.jpg'
 };
 
-// 4. Exportação Final
-export const galleryData: GalleryItem[] = ACTIVE_IDS.map((id, index) => ({
+// 4. Exportação das Duas Coleções Separadas
+export const photoData: GalleryItem[] = PHOTO_IDS.map((id, index) => ({
+  id,
+  displayNumber: index + 1,
+  imageUrl: customUrls[id] || `/assets/foto${id}.jpeg`,
+  caption: customCaptions[id] || 'Caption pending.',
+}));
+
+export const certificateData: GalleryItem[] = CERTIFICATE_IDS.map((id, index) => ({
   id,
   displayNumber: index + 1,
   imageUrl: customUrls[id] || `/assets/foto${id}.jpeg`,
