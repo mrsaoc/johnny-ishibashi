@@ -41,8 +41,8 @@ export default function GaleriaPage() {
       description: 'Johnny Ishibashi: O intérprete dos astros (Entrevista e cobertura).'
     },
     {
-      title: 'Vamos Magazine (Vol. 25)',
-      url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2023/01/VamosVol25.pdf',
+      title: 'Vamos Magazine (Vol. 35)',
+      url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2023/01/VamosVol35.pdf',
       description: 'Vamos Magazine by H.I.S BRASIL TURISMO (Edição em PDF).'
     }
   ];
