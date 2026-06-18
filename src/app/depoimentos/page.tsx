@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useLanguage, Language } from '@/context/LanguageContext';
 import { testimonialsData } from '@/data/testimonials';
 
@@ -24,7 +25,7 @@ export default function DepoimentosPage() {
         {testimonialsData.map((testimonial) => (
           <div 
             key={testimonial.id} 
-            className="bg-white border border-gray-200 p-8 sm:p-12 shadow-sm flex flex-col gap-8 relative"
+            className="bg-white border border-gray-200 p-8 sm:p-12 shadow-sm flex flex-col gap-6 relative"
           >
             <div className="absolute top-8 left-8 sm:top-10 sm:left-10 text-gray-200 opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
@@ -38,7 +39,24 @@ export default function DepoimentosPage() {
               </p>
             </blockquote>
 
-            <div className="relative z-10 flex flex-col gap-2 pt-6 border-t border-gray-100 mt-2">
+            {/* Grid Adaptativo de Imagens do Depoimento */}
+            {testimonial.images && testimonial.images.length > 0 && (
+              <div className={`relative z-10 grid gap-4 pt-4 pb-2 ${testimonial.images.length === 1 ? 'grid-cols-1 sm:w-2/3 mx-auto' : 'grid-cols-1 sm:grid-cols-2'}`}>
+                {testimonial.images.map((img, idx) => (
+                  <div key={idx} className="relative aspect-[4/3] w-full bg-[#E5E7EB] border border-gray-200 overflow-hidden shadow-sm group">
+                    <Image
+                      src={img}
+                      alt={`Registro documental - ${testimonial.author}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="relative z-10 flex flex-col gap-2 pt-6 border-t border-gray-100">
               <span className="font-sans font-bold text-[#004B23] text-lg uppercase tracking-widest">
                 {testimonial.author}
               </span>

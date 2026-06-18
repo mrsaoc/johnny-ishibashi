@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage, Language } from '@/context/LanguageContext';
 
-// Ícones Vetoriais das Bandeiras (Ajustados para aceitar classes flexíveis no Dropdown)
 const FlagBR = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 504" className={`rounded-[2px] shadow-sm ${className || 'w-7 sm:w-8 h-auto'}`}>
         <rect width="720" height="504" fill="#009b3a"/>
@@ -38,7 +37,6 @@ export default function Header() {
     const { language, setLanguage, t } = useLanguage();
     const pathname = usePathname();
 
-    // Lida com o scroll para o fundo branco
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
@@ -47,7 +45,6 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Trava a rolagem da tela se o menu mobile estiver aberto
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -56,7 +53,6 @@ export default function Header() {
         }
     }, [isMobileMenuOpen]);
 
-    // Fecha o dropdown de idioma ao clicar fora dele
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
@@ -83,14 +79,14 @@ export default function Header() {
                     : 'bg-[#F8F9FA] py-5 sm:py-6 md:py-8'
             }`}
         >
-            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">
+            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-4">
 
-                {/* 1. COLUNA ESQUERDA: Logo */}
-                <div className="flex xl:flex-1 justify-start z-50">
+                {/* 1. COLUNA ESQUERDA: Logo com min-w-0 para permitir flex-shrink seguro */}
+                <div className="flex xl:flex-1 justify-start z-50 min-w-0">
                     <Link
                         href="/"
                         onClick={closeMobileMenu}
-                        className="font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-widest text-[#111111] hover:text-[#004B23] transition-colors whitespace-nowrap"
+                        className="font-serif text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold tracking-widest text-[#111111] hover:text-[#004B23] transition-colors leading-[1.1]"
                     >
                         JOHNNY ISHIBASHI
                     </Link>
@@ -132,14 +128,14 @@ export default function Header() {
                     </Link>
                 </nav>
 
-                {/* 3. COLUNA DIREITA: Dropdown + Ações */}
-                <div className="flex items-center justify-end gap-3 sm:gap-6 xl:flex-1 relative z-50">
+                {/* 3. COLUNA DIREITA: Dropdown + Ações (Com shrink-0 para não ser empurrado) */}
+                <div className="flex items-center justify-end gap-2 sm:gap-6 xl:flex-1 relative z-50 shrink-0">
                     
-                    {/* Dropdown de Idiomas (Visível no Mobile e Desktop) */}
+                    {/* Dropdown de Idiomas */}
                     <div className="relative" ref={langMenuRef}>
                         <button
                             onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                            className="flex items-center gap-1.5 sm:gap-2 px-2 py-1.5 rounded hover:bg-gray-100 transition-colors"
+                            className="flex items-center gap-1.5 sm:gap-2 px-2 py-1.5 rounded hover:bg-gray-100 transition-colors shrink-0"
                             aria-label="Alterar idioma"
                         >
                             {language === 'PT' && <FlagBR />}
@@ -151,7 +147,6 @@ export default function Header() {
                             </svg>
                         </button>
 
-                        {/* Caixa do Dropdown */}
                         {isLangMenuOpen && (
                             <div className="absolute top-full right-0 mt-2 w-36 bg-white border border-gray-200 shadow-lg rounded-sm overflow-hidden flex flex-col z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                                 <button
@@ -181,7 +176,7 @@ export default function Header() {
                         href="https://wa.me/5513996988700"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hidden xl:inline-flex group relative items-center gap-2 bg-[#004B23] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em] overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap"
+                        className="hidden xl:inline-flex group relative items-center gap-2 bg-[#004B23] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em] overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap shrink-0"
                     >
                         <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#00A850] transform translate-y-[1px] group-hover:translate-y-0 transition-transform duration-300"></span>
                         <span className="relative z-10 flex items-center gap-2">
@@ -193,10 +188,10 @@ export default function Header() {
                         </span>
                     </a>
 
-                    {/* Botão Menu Mobile (Visível apenas Mobile/Tablet) */}
+                    {/* Botão Menu Mobile */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="xl:hidden text-[#111111] focus:outline-none hover:text-[#004B23] transition-colors p-2 -mr-2"
+                        className="xl:hidden text-[#111111] focus:outline-none hover:text-[#004B23] transition-colors p-2 shrink-0"
                         aria-label="Toggle Menu"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
