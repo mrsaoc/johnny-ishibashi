@@ -44,6 +44,11 @@ export default function GaleriaPage() {
       title: 'Vamos Magazine',
       url: 'https://his-brasil.com.br/jpn/wp-content/uploads/2025/07/HIS-Vamos-Vol35-Ebook.pdf',
       description: 'Vamos Magazine by H.I.S BRASIL TURISMO (Edição em PDF).'
+    },
+    {
+      title: 'Registro em Vídeo (YouTube)',
+      url: 'https://youtu.be/RMo_yAZR7iw?is=s7eGQk_fe8Z_hrcc',
+      description: 'Cobertura oficial e registro de atuação profissional em vídeo.'
     }
   ];
 

@@ -70,7 +70,7 @@ const customCaptions: Record<number, string> = {
   73: 'After-Match Interview',
   74: 'Xabi Alonso Japan Visit 2018 by Adidas',
   75: 'Interpreter’s Seat',
-  77: 'With David Villa (Penalty Soccer Clinic)',
+  77: 'With Thiago Nunes (Coach of Atlético Paranaense)',
   79: 'IPC no AR (IPC TV)',
   81: 'With Faf de Klerk (Rugby World Cup 2019)',
   82: 'Japan National Futsal Team’s Bench',
